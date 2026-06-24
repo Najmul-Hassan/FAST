@@ -1,26 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAST Entry Test Prep</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; background: #f4f4f9; }
-        h1 { color: #2c3e50; }
-        .test-list { list-style: none; padding: 0; }
-        .test-list li { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .test-list a { text-decoration: none; color: #2980b9; font-size: 18px; display: block; }
-        .test-list a:hover { text-decoration: underline; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            padding: 40px 45px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        .subhead {
+            color: #475569;
+            font-size: 16px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+        }
+        .test-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .test-link {
+            display: flex;
+            align-items: center;
+            background: #f8fafc;
+            padding: 18px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: 500;
+            border-left: 6px solid #3b82f6;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .test-link:hover {
+            background: #eef2ff;
+            border-left-color: #2563eb;
+            transform: translateX(6px);
+            box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+        }
+        .test-link .icon {
+            margin-right: 14px;
+            font-size: 22px;
+        }
+        .test-link .arrow {
+            margin-left: auto;
+            color: #94a3b8;
+            font-size: 20px;
+        }
+        .footer {
+            margin-top: 35px;
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 18px;
+        }
     </style>
 </head>
 <body>
-    <h1>📚 FAST University - Mock Tests</h1>
-    <p>Click a test below to start practicing:</p>
-    <ul class="test-list">
-        <!-- ✅ Link to your existing file -->
-        <li><a href="complexnumber.html">Complex Numbers Test</a></li>
+    <div class="container">
+        <h1>📚 FAST University</h1>
+        <div class="subhead">Mock Tests for Entry Test Preparation</div>
         
-        <!-- ➕ When you upload more files, just copy this line below and change the name -->
-        <!-- <li><a href="math-test.html">Math Test</a></li> -->
-        <!-- <li><a href="english-test.html">English Test</a></li> -->
-    </ul>
+        <div class="test-grid">
+            <!-- 🔽 UPDATED: All links point to your exact file names -->
+            <a href="complexNumber.html" class="test-link">
+                <span class="icon">🧪</span> Complex Numbers
+                <span class="arrow">→</span>
+            </a>
+            <a href="Matrices.html" class="test-link">
+                <span class="icon">🧮</span> Matrices & Determinants
+                <span class="arrow">→</span>
+            </a>
+            <a href="AnalyticalGeo.html" class="test-link">
+                <span class="icon">📐</span> Analytic Geometry
+                <span class="arrow">→</span>
+            </a>
+            <a href="TrignoTest1.html" class="test-link">
+                <span class="icon">📊</span> Trigonometric Functions
+                <span class="arrow">→</span>
+            </a>
+            <a href="TrigonometricFunctionsofAlliedAngles.html" class="test-link">
+                <span class="icon">🔄</span> Allied Angles
+                <span class="arrow">→</span>
+            </a>
+        </div>
+        <div class="footer">
+            ⚡ 100 MCQs each • +1 / -0.25 marking • Good luck!
+        </div>
+    </div>
 </body>
 </html>
