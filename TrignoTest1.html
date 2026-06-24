@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigonometric Functions – 100 MCQs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f5f9;
+            padding: 20px;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 35px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        }
+        h1 { font-size: 28px; text-align: center; margin-bottom: 4px; color: #0f172a; }
+        .subhead {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+        }
+        .question-block {
+            background: #f8fafc;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border-left: 6px solid #3b82f6;
+            transition: background 0.15s;
+        }
+        .question-block:hover { background: #f1f5f9; }
+        .q-header {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .q-number { color: #2563eb; min-width: 40px; font-weight: 700; }
+        .q-text { flex: 1; line-height: 1.5; }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 25px;
+            padding-left: 12px;
+        }
+        @media (max-width: 650px) { .options { grid-template-columns: 1fr; } }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s, border-left 0.2s;
+            border-left: 4px solid transparent;
+        }
+        .option-label:hover { background: #e2e8f0; }
+        .option-label input[type="radio"] {
+            accent-color: #2563eb;
+            transform: scale(1.15);
+            flex-shrink: 0;
+        }
+        .option-label .letter { font-weight: 600; color: #334155; min-width: 20px; }
+        /* Highlight styles */
+        .correct-answer {
+            background-color: #d4edda !important;
+            border-left: 4px solid #28a745 !important;
+        }
+        .wrong-answer {
+            background-color: #f8d7da !important;
+            border-left: 4px solid #dc3545 !important;
+        }
+        .btn-group {
+            text-align: center;
+            margin: 35px 0 20px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 16px rgba(37,99,235,0.3);
+        }
+        .btn:hover { background: #1d4ed8; transform: scale(1.02); }
+        .btn:active { transform: scale(0.97); }
+        .btn-reset {
+            background: #64748b;
+            box-shadow: 0 6px 16px rgba(100,116,139,0.3);
+        }
+        .btn-reset:hover { background: #475569; }
+        #result {
+            margin-top: 30px;
+            padding: 28px 20px;
+            background: #f8fafc;
+            border-radius: 18px;
+            border: 2px solid #cbd5e1;
+            display: none;
+            text-align: center;
+        }
+        #result .score { font-size: 40px; font-weight: 700; color: #0f172a; }
+        #result .detail { font-size: 18px; margin-top: 8px; color: #334155; }
+        #result .correct { color: #16a34a; }
+        #result .wrong { color: #dc2626; }
+        #result .unattempted { color: #6b7280; }
+        #answerStat {
+            margin-top: 16px;
+            padding: 14px 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 2px solid #2563eb;
+            display: inline-block;
+            font-weight: 500;
+        }
+        #answerStat .highlight-correct {
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin: 0 2px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 18px;
+        }
+        .math-inline { display: inline; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📐 Trigonometric Functions & Graphs</h1>
+    <div class="subhead">
+        100 MCQs – FAST‑NUCES Entry Test &nbsp;|&nbsp;
+        <span style="color:#2563eb;">+1</span> correct,
+        <span style="color:#dc2626;">−0.25</span> wrong,
+        <span style="color:#6b7280;">0</span> unattempted
+        <br>
+        <span style="font-size:14px; color:#64748b;">Options shuffled – correct answers highlighted after submission</span>
+    </div>
+
+    <form id="testForm">
+        <div id="questionsContainer"></div>
+        <div class="btn-group">
+            <button type="button" class="btn" onclick="submitTest()">📊 Submit &amp; Check Score</button>
+            <button type="button" class="btn btn-reset" onclick="resetTest()">🔄 Reset All</button>
+        </div>
+    </form>
+
+    <div id="result">
+        <div class="score" id="scoreDisplay"></div>
+        <div class="detail" id="detailDisplay"></div>
+        <div style="margin-top:14px; font-size:17px;">
+            <span class="correct">✔ Correct: <span id="correctCount">0</span></span> &nbsp;|&nbsp;
+            <span class="wrong">✘ Wrong: <span id="wrongCount">0</span></span> &nbsp;|&nbsp;
+            <span class="unattempted">⏺ Unattempted: <span id="unattemptedCount">0</span></span>
+        </div>
+        <div id="answerStat"></div>
+    </div>
+
+    <div class="footer">Designed for FAST‑NUCES entry test • Unit 9: Trigonometric Functions and Their Graphs</div>
+</div>
+
+<script>
+    // -------------------------------------------------------------
+    // QUESTIONS DATA – 100 MCQs from Trigonometric Functions
+    // -------------------------------------------------------------
+    const questionsData = [
+        { text: "Convert \\(\\frac{\\pi}{6}\\) radians to degrees.", options: ["\\(30^\\circ\\)", "\\(45^\\circ\\)", "\\(60^\\circ\\)", "\\(90^\\circ\\)"], correct: 0 },
+        { text: "Convert \\(120^\\circ\\) to radians.", options: ["\\(\\frac{2\\pi}{3}\\)", "\\(\\frac{\\pi}{3}\\)", "\\(\\frac{4\\pi}{3}\\)", "\\(\\frac{5\\pi}{6}\\)"], correct: 0 },
+        { text: "\\(\\sin 0 =\\)", options: ["0", "1", "\\(\\frac{1}{2}\\)", "\\(\\frac{\\sqrt{2}}{2}\\)"], correct: 0 },
+        { text: "\\(\\cos \\frac{\\pi}{3} =\\)", options: ["\\(\\frac{1}{2}\\)", "\\(\\frac{\\sqrt{3}}{2}\\)", "\\(\\frac{\\sqrt{2}}{2}\\)", "1"], correct: 0 },
+        { text: "\\(\\tan \\frac{\\pi}{4} =\\)", options: ["1", "\\(\\sqrt{3}\\)", "\\(\\frac{1}{\\sqrt{3}}\\)", "0"], correct: 0 },
+        { text: "\\(\\cot \\frac{\\pi}{6} =\\)", options: ["\\(\\sqrt{3}\\)", "\\(\\frac{1}{\\sqrt{3}}\\)", "1", "0"], correct: 0 },
+        { text: "\\(\\sec \\frac{\\pi}{3} =\\)", options: ["2", "\\(\\frac{2}{\\sqrt{3}}\\)", "\\(\\sqrt{2}\\)", "\\(\\frac{1}{2}\\)"], correct: 0 },
+        { text: "\\(\\csc \\frac{\\pi}{4} =\\)", options: ["\\(\\sqrt{2}\\)", "1", "\\(\\frac{1}{\\sqrt{2}}\\)", "2"], correct: 0 },
+        { text: "\\(\\sin \\frac{\\pi}{2} =\\)", options: ["1", "0", "-1", "\\(\\frac{1}{2}\\)"], correct: 0 },
+        { text: "\\(\\cos \\pi =\\)", options: ["-1", "1", "0", "\\(\\frac{1}{2}\\)"], correct: 0 },
+        { text: "\\(\\tan \\frac{\\pi}{2}\\) is:", options: ["Undefined", "0", "1", "\\(\\infty\\)"], correct: 0 },
+        { text: "The period of \\(y = \\sin x\\) is:", options: ["\\(2\\pi\\)", "\\(\\pi\\)", "\\(\\frac{\\pi}{2}\\)", "\\(4\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\cos x\\) is:", options: ["\\(2\\pi\\)", "\\(\\pi\\)", "\\(\\frac{\\pi}{2}\\)", "\\(4\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\tan x\\) is:", options: ["\\(\\pi\\)", "\\(2\\pi\\)", "\\(\\frac{\\pi}{2}\\)", "\\(3\\pi\\)"], correct: 0 },
+        { text: "The amplitude of \\(y = 3\\sin x\\) is:", options: ["3", "1", "2", "6"], correct: 0 },
+        { text: "The amplitude of \\(y = -2\\cos x\\) is:", options: ["2", "-2", "1", "4"], correct: 0 },
+        { text: "The phase shift of \\(y = \\sin(x - \\frac{\\pi}{2})\\) is:", options: ["\\(\\frac{\\pi}{2}\\) units right", "\\(\\frac{\\pi}{2}\\) units left", "\\(\\pi\\) units right", "\\(\\pi\\) units left"], correct: 0 },
+        { text: "The phase shift of \\(y = \\cos(x + \\frac{\\pi}{4})\\) is:", options: ["\\(\\frac{\\pi}{4}\\) units left", "\\(\\frac{\\pi}{4}\\) units right", "\\(\\frac{\\pi}{2}\\) units left", "\\(\\frac{\\pi}{2}\\) units right"], correct: 0 },
+        { text: "The range of \\(y = \\sin x\\) is:", options: ["\\([-1, 1]\\)", "\\([0, 1]\\)", "\\([-1, 0]\\)", "\\((-\\infty, \\infty)\\)"], correct: 0 },
+        { text: "The range of \\(y = \\tan x\\) is:", options: ["\\((-\\infty, \\infty)\\)", "\\([-1, 1]\\)", "\\([0, 1]\\)", "\\((-1, 1)\\)"], correct: 0 },
+        { text: "The domain of \\(y = \\sec x\\) excludes:", options: ["\\(x = \\frac{\\pi}{2} + k\\pi\\)", "\\(x = k\\pi\\)", "\\(x = \\frac{\\pi}{2} + 2k\\pi\\)", "\\(x = \\pi + 2k\\pi\\)"], correct: 0 },
+        { text: "The domain of \\(y = \\tan x\\) excludes:", options: ["\\(x = \\frac{\\pi}{2} + k\\pi\\)", "\\(x = k\\pi\\)", "\\(x = \\frac{\\pi}{2} + 2k\\pi\\)", "\\(x = \\pi + 2k\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\sin(2x)\\) is:", options: ["\\(\\pi\\)", "\\(2\\pi\\)", "\\(\\frac{\\pi}{2}\\)", "\\(4\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\cos(3x)\\) is:", options: ["\\(\\frac{2\\pi}{3}\\)", "\\(\\frac{\\pi}{3}\\)", "\\(\\frac{4\\pi}{3}\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\tan(2x)\\) is:", options: ["\\(\\frac{\\pi}{2}\\)", "\\(\\pi\\)", "\\(2\\pi\\)", "\\(4\\pi\\)"], correct: 0 },
+        { text: "The graph of \\(y = \\sin x\\) starts at the origin and:", options: ["Goes up to maximum at \\(\\frac{\\pi}{2}\\)", "Goes down to minimum at \\(\\frac{\\pi}{2}\\)", "Has a vertical asymptote at \\(\\frac{\\pi}{2}\\)", "Never crosses the x-axis"], correct: 0 },
+        { text: "The graph of \\(y = \\cos x\\) at \\(x=0\\) has:", options: ["A maximum value of 1", "A minimum value of -1", "A zero", "An asymptote"], correct: 0 },
+        { text: "The zeros of \\(y = \\sin x\\) occur at:", options: ["\\(x = k\\pi\\)", "\\(x = \\frac{\\pi}{2} + k\\pi\\)", "\\(x = 2k\\pi\\)", "\\(x = \\frac{\\pi}{2} + 2k\\pi\\)"], correct: 0 },
+        { text: "The zeros of \\(y = \\cos x\\) occur at:", options: ["\\(x = \\frac{\\pi}{2} + k\\pi\\)", "\\(x = k\\pi\\)", "\\(x = 2k\\pi\\)", "\\(x = \\frac{\\pi}{2} + 2k\\pi\\)"], correct: 0 },
+        { text: "The vertical asymptotes of \\(y = \\tan x\\) occur at:", options: ["\\(x = \\frac{\\pi}{2} + k\\pi\\)", "\\(x = k\\pi\\)", "\\(x = 2k\\pi\\)", "\\(x = \\frac{\\pi}{2} + 2k\\pi\\)"], correct: 0 },
+        { text: "The vertical asymptotes of \\(y = \\cot x\\) occur at:", options: ["\\(x = k\\pi\\)", "\\(x = \\frac{\\pi}{2} + k\\pi\\)", "\\(x = 2k\\pi\\)", "\\(x = \\frac{\\pi}{2} + 2k\\pi\\)"], correct: 0 },
+        { text: "The range of \\(y = \\sec x\\) is:", options: ["\\((-\\infty, -1] \\cup [1, \\infty)\\)", "\\([-1, 1]\\)", "\\((-\\infty, \\infty)\\)", "\\([0, \\infty)\\)"], correct: 0 },
+        { text: "The range of \\(y = \\csc x\\) is:", options: ["\\((-\\infty, -1] \\cup [1, \\infty)\\)", "\\([-1, 1]\\)", "\\((-\\infty, \\infty)\\)", "\\((0, \\infty)\\)"], correct: 0 },
+        { text: "The amplitude of \\(y = 4 + 3\\sin x\\) is:", options: ["3", "4", "7", "1"], correct: 0 },
+        { text: "The phase shift of \\(y = 2\\cos(2x - \\pi)\\) is:", options: ["\\(\\frac{\\pi}{2}\\) units right", "\\(\\pi\\) units right", "\\(\\frac{\\pi}{2}\\) units left", "\\(\\pi\\) units left"], correct: 0 },
+        { text: "The period of \\(y = 3\\sin(4x)\\) is:", options: ["\\(\\frac{\\pi}{2}\\)", "\\(\\frac{\\pi}{4}\\)", "\\(\\pi\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "Which of the following has period \\(\\pi\\)?", options: ["\\(y = \\tan x\\)", "\\(y = \\sin x\\)", "\\(y = \\cos x\\)", "\\(y = \\sec x\\)"], correct: 0 },
+        { text: "Which of the following has period \\(2\\pi\\)?", options: ["\\(y = \\sin x\\)", "\\(y = \\tan x\\)", "\\(y = \\cot x\\)", "\\(y = \\tan(2x)\\)"], correct: 0 },
+        { text: "Which of the following is an even function?", options: ["\\(y = \\cos x\\)", "\\(y = \\sin x\\)", "\\(y = \\tan x\\)", "\\(y = \\cot x\\)"], correct: 0 },
+        { text: "Which of the following is an odd function?", options: ["\\(y = \\sin x\\)", "\\(y = \\cos x\\)", "\\(y = \\sec x\\)", "\\(y = |\\cos x|\\)"], correct: 0 },
+        { text: "The maximum value of \\(y = 5\\cos x\\) is:", options: ["5", "1", "-5", "0"], correct: 0 },
+        { text: "The minimum value of \\(y = 2\\sin x - 1\\) is:", options: ["-3", "-1", "1", "3"], correct: 0 },
+        { text: "The graph of \\(y = \\sin(x + \\frac{\\pi}{3})\\) is shifted:", options: ["\\(\\frac{\\pi}{3}\\) units left", "\\(\\frac{\\pi}{3}\\) units right", "\\(\\frac{2\\pi}{3}\\) units left", "\\(\\frac{2\\pi}{3}\\) units right"], correct: 0 },
+        { text: "The graph of \\(y = \\cos(x - \\frac{\\pi}{6})\\) is shifted:", options: ["\\(\\frac{\\pi}{6}\\) units right", "\\(\\frac{\\pi}{6}\\) units left", "\\(\\frac{\\pi}{3}\\) units right", "\\(\\frac{\\pi}{3}\\) units left"], correct: 0 },
+        { text: "The period of \\(y = \\tan(3x)\\) is:", options: ["\\(\\frac{\\pi}{3}\\)", "\\(\\frac{2\\pi}{3}\\)", "\\(\\pi\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\cot(2x)\\) is:", options: ["\\(\\frac{\\pi}{2}\\)", "\\(\\frac{\\pi}{4}\\)", "\\(\\pi\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\sec(2x)\\) is:", options: ["\\(\\pi\\)", "\\(\\frac{\\pi}{2}\\)", "\\(2\\pi\\)", "\\(4\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\csc(3x)\\) is:", options: ["\\(\\frac{2\\pi}{3}\\)", "\\(\\frac{\\pi}{3}\\)", "\\(\\frac{4\\pi}{3}\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "The graph of \\(y = \\sin x\\) is symmetric about:", options: ["The origin", "The y-axis", "The x-axis", "The line \\(y=x\\)"], correct: 0 },
+        { text: "The graph of \\(y = \\cos x\\) is symmetric about:", options: ["The y-axis", "The origin", "The x-axis", "The line \\(y=x\\)"], correct: 0 },
+        { text: "Which of the following functions does \\textbf{not} have an amplitude?", options: ["\\(y = \\tan x\\)", "\\(y = \\sin x\\)", "\\(y = \\cos x\\)", "\\(y = 2\\sin x\\)"], correct: 0 },
+        { text: "The amplitude of \\(y = -4\\cos(2x)\\) is:", options: ["4", "-4", "2", "8"], correct: 0 },
+        { text: "The phase shift of \\(y = \\sin(2x - \\frac{\\pi}{2})\\) is:", options: ["\\(\\frac{\\pi}{4}\\) units right", "\\(\\frac{\\pi}{2}\\) units right", "\\(\\frac{\\pi}{4}\\) units left", "\\(\\frac{\\pi}{2}\\) units left"], correct: 0 },
+        { text: "The phase shift of \\(y = \\cos(3x + \\pi)\\) is:", options: ["\\(\\frac{\\pi}{3}\\) units left", "\\(\\pi\\) units left", "\\(\\frac{\\pi}{3}\\) units right", "\\(\\pi\\) units right"], correct: 0 },
+        { text: "How many zeros does \\(y = \\sin x\\) have in the interval \\([0, 2\\pi]\\)?", options: ["3", "2", "1", "4"], correct: 0 },
+        { text: "How many zeros does \\(y = \\cos x\\) have in the interval \\([0, 2\\pi]\\)?", options: ["2", "3", "1", "4"], correct: 0 },
+        { text: "How many vertical asymptotes does \\(y = \\cot x\\) have in the interval \\([0, \\pi]\\)?", options: ["2", "1", "0", "3"], correct: 0 },
+        { text: "The graph of \\(y = \\sec x\\) is the reciprocal of:", options: ["\\(y = \\cos x\\)", "\\(y = \\sin x\\)", "\\(y = \\tan x\\)", "\\(y = \\cot x\\)"], correct: 0 },
+        { text: "The graph of \\(y = \\csc x\\) is the reciprocal of:", options: ["\\(y = \\sin x\\)", "\\(y = \\cos x\\)", "\\(y = \\tan x\\)", "\\(y = \\cot x\\)"], correct: 0 },
+        { text: "Which function has vertical asymptotes at \\(x = k\\pi\\)?", options: ["\\(y = \\cot x\\)", "\\(y = \\tan x\\)", "\\(y = \\sec x\\)", "\\(y = \\sin x\\)"], correct: 0 },
+        { text: "The period of \\(y = 2\\sin(3x)\\) is:", options: ["\\(\\frac{2\\pi}{3}\\)", "\\(\\frac{\\pi}{3}\\)", "\\(2\\pi\\)", "\\(6\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = 4\\cos(2x)\\) is:", options: ["\\(\\pi\\)", "\\(2\\pi\\)", "\\(\\frac{\\pi}{2}\\)", "\\(4\\pi\\)"], correct: 0 },
+        { text: "The amplitude of \\(y = 0.5\\sin x\\) is:", options: ["0.5", "1", "2", "0"], correct: 0 },
+        { text: "The phase shift of \\(y = \\sin(x - \\pi)\\) is:", options: ["\\(\\pi\\) units right", "\\(\\pi\\) units left", "\\(2\\pi\\) units right", "\\(2\\pi\\) units left"], correct: 0 },
+        { text: "The phase shift of \\(y = \\cos(x + \\frac{\\pi}{2})\\) is:", options: ["\\(\\frac{\\pi}{2}\\) units left", "\\(\\frac{\\pi}{2}\\) units right", "\\(\\pi\\) units left", "\\(\\pi\\) units right"], correct: 0 },
+        { text: "The vertical shift of \\(y = 3 + \\sin x\\) is:", options: ["3 units up", "3 units down", "1 unit up", "1 unit down"], correct: 0 },
+        { text: "The vertical shift of \\(y = \\cos x - 2\\) is:", options: ["2 units down", "2 units up", "1 unit down", "1 unit up"], correct: 0 },
+        { text: "The maximum value of \\(y = 2\\sin x + 1\\) is:", options: ["3", "2", "1", "0"], correct: 0 },
+        { text: "The minimum value of \\(y = 3\\cos x - 2\\) is:", options: ["-5", "-2", "1", "3"], correct: 0 },
+        { text: "The range of \\(y = 2\\sin x + 3\\) is:", options: ["\\([1, 5]\\)", "\\([-2, 2]\\)", "\\([3, 5]\\)", "\\([-1, 3]\\)"], correct: 0 },
+        { text: "The range of \\(y = -3\\cos x\\) is:", options: ["\\([-3, 3]\\)", "\\([-3, 0]\\)", "\\([0, 3]\\)", "\\([-1, 1]\\)"], correct: 0 },
+        { text: "The period of \\(y = 5\\sin(\\pi x)\\) is:", options: ["2", "1", "\\(\\pi\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "The period of \\(y = \\cos(2\\pi x)\\) is:", options: ["1", "2", "\\(\\pi\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "Which of the following transformations affects the amplitude of a trigonometric function?", options: ["Vertical stretch", "Horizontal shift", "Vertical shift", "Horizontal stretch"], correct: 0 },
+        { text: "Which transformation affects the period of a trigonometric function?", options: ["Horizontal stretch/compression", "Vertical stretch/compression", "Vertical shift", "Reflection"], correct: 0 },
+        { text: "The graph of \\(y = \\sin(x + \\frac{\\pi}{2})\\) is identical to:", options: ["\\(y = \\cos x\\)", "\\(y = -\\cos x\\)", "\\(y = \\sin x\\)", "\\(y = -\\sin x\\)"], correct: 0 },
+        { text: "The graph of \\(y = \\cos(x - \\frac{\\pi}{2})\\) is identical to:", options: ["\\(y = \\sin x\\)", "\\(y = -\\sin x\\)", "\\(y = \\cos x\\)", "\\(y = -\\cos x\\)"], correct: 0 },
+        { text: "The graph of \\(y = -\\sin x\\) is a reflection of \\(y = \\sin x\\) about:", options: ["The x-axis", "The y-axis", "The origin", "The line \\(y=x\\)"], correct: 0 },
+        { text: "The graph of \\(y = \\sin(-x)\\) is a reflection of \\(y = \\sin x\\) about:", options: ["The y-axis", "The x-axis", "The origin", "The line \\(y=x\\)"], correct: 0 },
+        { text: "The period of \\(y = \\tan(2x + \\pi)\\) is:", options: ["\\(\\frac{\\pi}{2}\\)", "\\(\\pi\\)", "\\(2\\pi\\)", "\\(\\frac{\\pi}{4}\\)"], correct: 0 },
+        { text: "The period of \\(y = \\cot(3x - \\frac{\\pi}{2})\\) is:", options: ["\\(\\frac{\\pi}{3}\\)", "\\(\\frac{2\\pi}{3}\\)", "\\(\\pi\\)", "\\(2\\pi\\)"], correct: 0 },
+        { text: "The phase shift of \\(y = \\tan(2x - \\frac{\\pi}{2})\\) is:", options: ["\\(\\frac{\\pi}{4}\\) units right", "\\(\\frac{\\pi}{2}\\) units right", "\\(\\frac{\\pi}{4}\\) units left", "\\(\\frac{\\pi}{2}\\) units left"], correct: 0 },
+        { text: "The phase shift of \\(y = \\cot(3x + \\frac{\\pi}{6})\\) is:", options: ["\\(\\frac{\\pi}{18}\\) units left", "\\(\\frac{\\pi}{6}\\) units left", "\\(\\frac{\\pi}{18}\\) units right", "\\(\\frac{\\pi}{6}\\) units right"], correct: 0 },
+        { text: "The graph of \\(y = 2\\sin x\\) compared to \\(y = \\sin x\\) is:", options: ["Vertically stretched by factor 2", "Horizontally stretched by factor 2", "Shifted up by 2 units", "Shifted right by 2 units"], correct: 0 },
+        { text: "The graph of \\(y = \\sin(2x)\\) compared to \\(y = \\sin x\\) is:", options: ["Horizontally compressed by factor 2", "Horizontally stretched by factor 2", "Vertically stretched by factor 2", "Shifted left by 2 units"], correct: 0 },
+        { text: "Which of the following has period \\(\\frac{\\pi}{2}\\)?", options: ["\\(y = \\tan(2x)\\)", "\\(y = \\sin(2x)\\)", "\\(y = \\cos(2x)\\)", "\\(y = \\tan(4x)\\)"], correct: 0 },
+        { text: "Which of the following has period \\(4\\pi\\)?", options: ["\\(y = \\sin\\left(\\frac{x}{2}\\right)\\)", "\\(y = \\sin(2x)\\)", "\\(y = \\cos\\left(\\frac{x}{2}\\right)\\)", "\\(y = \\tan\\left(\\frac{x}{2}\\right)\\)"], correct: 0 },
+        { text: "The amplitude of \\(y = 3\\sin(2x) + 1\\) is:", options: ["3", "2", "1", "4"], correct: 0 },
+        { text: "The period of \\(y = 3\\sin(2x) + 1\\) is:", options: ["\\(\\pi\\)", "\\(2\\pi\\)", "\\(\\frac{\\pi}{2}\\)", "\\(4\\pi\\)"], correct: 0 },
+        { text: "The phase shift of \\(y = 3\\sin(2x - \\pi) + 1\\) is:", options: ["\\(\\frac{\\pi}{2}\\) units right", "\\(\\pi\\) units right", "\\(\\frac{\\pi}{2}\\) units left", "\\(\\pi\\) units left"], correct: 0 },
+        { text: "The vertical shift of \\(y = 3\\sin(2x - \\pi) + 1\\) is:", options: ["1 unit up", "3 units up", "1 unit down", "3 units down"], correct: 0 },
+        { text: "The maximum value of \\(y = 3\\sin(2x) + 1\\) is:", options: ["4", "3", "2", "1"], correct: 0 },
+        { text: "The minimum value of \\(y = 3\\sin(2x) + 1\\) is:", options: ["-2", "-1", "0", "1"], correct: 0 },
+        { text: "The height of a tide is modeled by \\(h(t) = 2\\cos\\left(\\frac{\\pi}{6}t\\right) + 5\\) (in meters). What is the amplitude?", options: ["2", "5", "7", "1"], correct: 0 },
+        { text: "In the previous question, what is the period of the tide in hours (if t is in hours)?", options: ["12", "6", "24", "3"], correct: 0 },
+        { text: "A Ferris wheel has a radius of 10 m and completes one revolution in 60 seconds. If the center is 12 m above ground, the height of a passenger as a function of time can be modeled by:", options: ["\\(h(t) = 10\\sin\\left(\\frac{\\pi}{30}t\\right) + 12\\)", "\\(h(t) = 10\\sin\\left(\\frac{\\pi}{60}t\\right) + 12\\)", "\\(h(t) = 12\\sin\\left(\\frac{\\pi}{30}t\\right) + 10\\)", "\\(h(t) = 10\\cos\\left(\\frac{\\pi}{30}t\\right) + 12\\)"], correct: 0 },
+        { text: "A sound wave is modeled by \\(y = 0.5\\sin(880\\pi t)\\). What is its frequency (in Hz)?", options: ["440", "880", "220", "1760"], correct: 0 },
+        { text: "Given \\(y = -2\\cos(3x + \\pi) + 1\\), what is the phase shift?", options: ["\\(\\frac{\\pi}{3}\\) units left", "\\(\\pi\\) units left", "\\(\\frac{\\pi}{3}\\) units right", "\\(\\pi\\) units right"], correct: 0 },
+        { text: "Which function has a graph that passes through the origin and has vertical asymptotes at \\(x = \\frac{\\pi}{2} + k\\pi\\)?", options: ["\\(y = \\tan x\\)", "\\(y = \\sin x\\)", "\\(y = \\cos x\\)", "\\(y = \\cot x\\)"], correct: 0 },
+        { text: "Which function has a graph that has a maximum at \\(x=0\\), zeros at \\(x = \\frac{\\pi}{2} + k\\pi\\), and period \\(2\\pi\\)?", options: ["\\(y = \\cos x\\)", "\\(y = \\sin x\\)", "\\(y = \\sec x\\)", "\\(y = \\csc x\\)"], correct: 0 }
+    ];
+
+    // -------------------------------------------------------------
+    // SHUFFLE & RENDER LOGIC
+    // -------------------------------------------------------------
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    let shuffledQuestions = [];
+
+    function prepareQuestions() {
+        shuffledQuestions = questionsData.map(q => {
+            const optArray = q.options.map((opt, idx) => ({ option: opt, originalIndex: idx }));
+            shuffleArray(optArray);
+            const newOptions = optArray.map(item => item.option);
+            const newCorrect = optArray.findIndex(item => item.originalIndex === q.correct);
+            return { text: q.text, options: newOptions, correct: newCorrect };
+        });
+    }
+
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        let html = '';
+        shuffledQuestions.forEach((q, index) => {
+            const qNum = index + 1;
+            html += `<div class="question-block" id="q${qNum}">`;
+            html += `<div class="q-header"><span class="q-number">${qNum}.</span> <span class="q-text">${q.text}</span></div>`;
+            html += `<div class="options">`;
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, optIndex) => {
+                const radioId = `q${qNum}_${optIndex}`;
+                html += `<label class="option-label" for="${radioId}" id="label_${radioId}">`;
+                html += `<input type="radio" name="q${qNum}" id="${radioId}" value="${optIndex}">`;
+                html += `<span class="letter">${letters[optIndex]}.</span> <span>${opt}</span>`;
+                html += `</label>`;
+            });
+            html += `</div></div>`;
+        });
+        container.innerHTML = html;
+        if (window.MathJax && MathJax.Hub) MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+
+    prepareQuestions();
+    renderQuestions();
+
+    // -------------------------------------------------------------
+    // HELPER: Clear all highlights
+    // -------------------------------------------------------------
+    function clearHighlights() {
+        document.querySelectorAll('.option-label').forEach(label => {
+            label.classList.remove('correct-answer', 'wrong-answer');
+        });
+    }
+
+    // -------------------------------------------------------------
+    // SUBMIT & RESET
+    // -------------------------------------------------------------
+    function submitTest() {
+        clearHighlights();
+
+        let correct = 0, wrong = 0, unattempted = 0;
+        const total = shuffledQuestions.length;
+
+        for (let i = 0; i < total; i++) {
+            const qNum = i + 1;
+            const radios = document.getElementsByName(`q${qNum}`);
+            let selected = null;
+            for (const radio of radios) {
+                if (radio.checked) {
+                    selected = parseInt(radio.value);
+                    break;
+                }
+            }
+
+            const correctIdx = shuffledQuestions[i].correct;
+            const correctLabel = document.getElementById(`label_q${qNum}_${correctIdx}`);
+            if (correctLabel) correctLabel.classList.add('correct-answer');
+
+            if (selected !== null) {
+                if (selected === correctIdx) {
+                    correct++;
+                } else {
+                    wrong++;
+                    const wrongLabel = document.getElementById(`label_q${qNum}_${selected}`);
+                    if (wrongLabel) wrongLabel.classList.add('wrong-answer');
+                }
+            } else {
+                unattempted++;
+            }
+        }
+
+        const score = correct - 0.25 * wrong;
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        document.getElementById('scoreDisplay').textContent = `${score.toFixed(2)} / ${total}`;
+        document.getElementById('detailDisplay').textContent = `You got ${correct} correct, ${wrong} wrong, and ${unattempted} unattempted.`;
+        document.getElementById('correctCount').textContent = correct;
+        document.getElementById('wrongCount').textContent = wrong;
+        document.getElementById('unattemptedCount').textContent = unattempted;
+
+        // Correct-answer distribution
+        const posCount = [0, 0, 0, 0];
+        shuffledQuestions.forEach(q => { posCount[q.correct]++; });
+        document.getElementById('answerStat').innerHTML = `
+            <div style="font-size:15px; color:#0f172a;">
+                <strong>✅ Correct‑answer distribution:</strong>
+                <span class="highlight-correct">A: ${posCount[0]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">B: ${posCount[1]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">C: ${posCount[2]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">D: ${posCount[3]}</span>
+                &nbsp;&nbsp;<span style="font-size:13px; color:#64748b;">(shuffled for realism)</span>
+            </div>
+        `;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetTest() {
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+        clearHighlights();
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('correctCount').textContent = '0';
+        document.getElementById('wrongCount').textContent = '0';
+        document.getElementById('unattemptedCount').textContent = '0';
+        document.getElementById('scoreDisplay').textContent = '';
+        document.getElementById('detailDisplay').textContent = '';
+        document.getElementById('answerStat').innerHTML = '';
+        prepareQuestions();
+        renderQuestions();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

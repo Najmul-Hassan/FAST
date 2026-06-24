@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytic Geometry – 100 MCQs</title>
+    <style>
+        /* Same CSS as above – include all styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f5f9;
+            padding: 20px;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 35px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        }
+        h1 { font-size: 28px; text-align: center; margin-bottom: 4px; color: #0f172a; }
+        .subhead {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+        }
+        .question-block {
+            background: #f8fafc;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border-left: 6px solid #3b82f6;
+            transition: background 0.15s;
+        }
+        .question-block:hover { background: #f1f5f9; }
+        .q-header {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .q-number { color: #2563eb; min-width: 40px; font-weight: 700; }
+        .q-text { flex: 1; line-height: 1.5; }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 25px;
+            padding-left: 12px;
+        }
+        @media (max-width: 650px) { .options { grid-template-columns: 1fr; } }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s, border-left 0.2s;
+            border-left: 4px solid transparent;
+        }
+        .option-label:hover { background: #e2e8f0; }
+        .option-label input[type="radio"] {
+            accent-color: #2563eb;
+            transform: scale(1.15);
+            flex-shrink: 0;
+        }
+        .option-label .letter { font-weight: 600; color: #334155; min-width: 20px; }
+        .correct-answer {
+            background-color: #d4edda !important;
+            border-left: 4px solid #28a745 !important;
+        }
+        .wrong-answer {
+            background-color: #f8d7da !important;
+            border-left: 4px solid #dc3545 !important;
+        }
+        .btn-group {
+            text-align: center;
+            margin: 35px 0 20px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 16px rgba(37,99,235,0.3);
+        }
+        .btn:hover { background: #1d4ed8; transform: scale(1.02); }
+        .btn:active { transform: scale(0.97); }
+        .btn-reset {
+            background: #64748b;
+            box-shadow: 0 6px 16px rgba(100,116,139,0.3);
+        }
+        .btn-reset:hover { background: #475569; }
+        #result {
+            margin-top: 30px;
+            padding: 28px 20px;
+            background: #f8fafc;
+            border-radius: 18px;
+            border: 2px solid #cbd5e1;
+            display: none;
+            text-align: center;
+        }
+        #result .score { font-size: 40px; font-weight: 700; color: #0f172a; }
+        #result .detail { font-size: 18px; margin-top: 8px; color: #334155; }
+        #result .correct { color: #16a34a; }
+        #result .wrong { color: #dc2626; }
+        #result .unattempted { color: #6b7280; }
+        #answerStat {
+            margin-top: 16px;
+            padding: 14px 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 2px solid #2563eb;
+            display: inline-block;
+            font-weight: 500;
+        }
+        #answerStat .highlight-correct {
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin: 0 2px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 18px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+<div class="container">
+    <h1>📐 Analytic Geometry</h1>
+    <div class="subhead">
+        100 MCQs – FAST‑NUCES Entry Test &nbsp;|&nbsp;
+        <span style="color:#2563eb;">+1</span> correct,
+        <span style="color:#dc2626;">−0.25</span> wrong,
+        <span style="color:#6b7280;">0</span> unattempted
+        <br>
+        <span style="font-size:14px; color:#64748b;">Options shuffled — correct answers highlighted after submission</span>
+    </div>
+
+    <form id="testForm">
+        <div id="questionsContainer"></div>
+        <div class="btn-group">
+            <button type="button" class="btn" onclick="submitTest()">📊 Submit &amp; Check Score</button>
+            <button type="button" class="btn btn-reset" onclick="resetTest()">🔄 Reset All</button>
+        </div>
+    </form>
+
+    <div id="result">
+        <div class="score" id="scoreDisplay"></div>
+        <div class="detail" id="detailDisplay"></div>
+        <div style="margin-top:14px; font-size:17px;">
+            <span class="correct">✔ Correct: <span id="correctCount">0</span></span> &nbsp;|&nbsp;
+            <span class="wrong">✘ Wrong: <span id="wrongCount">0</span></span> &nbsp;|&nbsp;
+            <span class="unattempted">⏺ Unattempted: <span id="unattemptedCount">0</span></span>
+        </div>
+        <div id="answerStat"></div>
+    </div>
+
+    <div class="footer">Designed for FAST‑NUCES entry test • Unit 7: Introduction to Analytic Geometry</div>
+</div>
+
+<script>
+    // -------------------------------------------------------------
+    // QUESTIONS DATA – 100 MCQs from Analytic Geometry
+    // (Replace with your full list; included here for completeness)
+    // -------------------------------------------------------------
+    const questionsData = [
+        // Q1
+        { text: "The distance between points \\(A(x_1, y_1)\\) and \\(B(x_2, y_2)\\) is:", options: ["\\(\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)", "\\(\\sqrt{(x_2 + x_1)^2 + (y_2 + y_1)^2}\\)", "\\((x_2 - x_1)^2 + (y_2 - y_1)^2\\)", "\\(\\sqrt{(x_2 - x_1)^2 - (y_2 - y_1)^2}\\)"], correct: 0 },
+        // Q2
+        { text: "The midpoint of the segment joining \\(A(x_1, y_1)\\) and \\(B(x_2, y_2)\\) is:", options: ["\\(\\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)\\)", "\\(\\left(\\frac{x_1-x_2}{2}, \\frac{y_1-y_2}{2}\\right)\\)", "\\(\\left(\\frac{x_1+x_2}{2}, \\frac{y_1-y_2}{2}\\right)\\)", "\\(\\left(\\frac{x_1-x_2}{2}, \\frac{y_1+y_2}{2}\\right)\\)"], correct: 0 },
+        // Q3
+        { text: "The coordinates of the point dividing the line segment joining \\(A(x_1, y_1)\\) and \\(B(x_2, y_2)\\) in the ratio \\(m:n\\) internally are:", options: ["\\(\\left(\\frac{m x_2 + n x_1}{m+n}, \\frac{m y_2 + n y_1}{m+n}\\right)\\)", "\\(\\left(\\frac{m x_1 + n x_2}{m+n}, \\frac{m y_1 + n y_2}{m+n}\\right)\\)", "\\(\\left(\\frac{m x_2 - n x_1}{m+n}, \\frac{m y_2 - n y_1}{m+n}\\right)\\)", "\\(\\left(\\frac{m x_1 - n x_2}{m+n}, \\frac{m y_1 - n y_2}{m+n}\\right)\\)"], correct: 0 },
+        // Q4
+        { text: "The area of the triangle with vertices \\((x_1, y_1), (x_2, y_2), (x_3, y_3)\\) is:", options: ["\\(\\frac{1}{2}\\left| x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2) \\right|\\)", "\\(\\frac{1}{2}\\left( x_1 y_2 + x_2 y_3 + x_3 y_1 \\right)\\)", "\\(\\left| x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2) \\right|\\)", "\\(\\frac{1}{2}\\left( x_1 y_3 + x_2 y_1 + x_3 y_2 \\right)\\)"], correct: 0 },
+        // Q5
+        { text: "The slope of a line passing through \\((x_1, y_1)\\) and \\((x_2, y_2)\\) is:", options: ["\\(\\frac{y_2 - y_1}{x_2 - x_1}\\)", "\\(\\frac{x_2 - x_1}{y_2 - y_1}\\)", "\\(\\frac{y_1 - y_2}{x_1 - x_2}\\)", "\\(\\frac{x_1 - x_2}{y_1 - y_2}\\)"], correct: 0 },
+        // Q6
+        { text: "The equation of a horizontal line passing through \\((a, b)\\) is:", options: ["\\(y = b\\)", "\\(x = a\\)", "\\(y = a\\)", "\\(x = b\\)"], correct: 0 },
+        // Q7
+        { text: "The equation of a vertical line passing through \\((a, b)\\) is:", options: ["\\(x = a\\)", "\\(y = b\\)", "\\(x = b\\)", "\\(y = a\\)"], correct: 0 },
+        // Q8
+        { text: "The equation of a line with slope \\(m\\) passing through \\((x_1, y_1)\\) is:", options: ["\\(y - y_1 = m(x - x_1)\\)", "\\(y + y_1 = m(x + x_1)\\)", "\\(y - y_1 = m(x_1 - x)\\)", "\\(y + y_1 = m(x - x_1)\\)"], correct: 0 },
+        // Q9
+        { text: "The equation \\(y = mx + c\\) is called:", options: ["Slope-intercept form", "Point-slope form", "Intercept form", "General form"], correct: 0 },
+        // Q10
+        { text: "The equation \\(\\frac{x}{a} + \\frac{y}{b} = 1\\) is called:", options: ["Intercept form", "Slope-intercept form", "Two-point form", "General form"], correct: 0 },
+        // Q11
+        { text: "The general form of a linear equation is:", options: ["\\(Ax + By + C = 0\\)", "\\(y = mx + c\\)", "\\(ax + by = c\\)", "\\(y - y_1 = m(x - x_1)\\)"], correct: 0 },
+        // Q12
+        { text: "Two lines with slopes \\(m_1\\) and \\(m_2\\) are parallel if:", options: ["\\(m_1 = m_2\\)", "\\(m_1 m_2 = -1\\)", "\\(m_1 + m_2 = 0\\)", "\\(m_1 - m_2 = 1\\)"], correct: 0 },
+        // Q13
+        { text: "Two lines with slopes \\(m_1\\) and \\(m_2\\) are perpendicular if:", options: ["\\(m_1 m_2 = -1\\)", "\\(m_1 = m_2\\)", "\\(m_1 + m_2 = 0\\)", "\\(m_1 - m_2 = 1\\)"], correct: 0 },
+        // Q14
+        { text: "The slope of a line parallel to the x-axis is:", options: ["\\(0\\)", "\\(1\\)", "\\(-1\\)", "Undefined"], correct: 0 },
+        // Q15
+        { text: "The slope of a line parallel to the y-axis is:", options: ["Undefined", "\\(0\\)", "\\(1\\)", "\\(-1\\)"], correct: 0 },
+        // Q16
+        { text: "The distance of a point \\((x_1, y_1)\\) from the line \\(Ax + By + C = 0\\) is:", options: ["\\(\\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}\\)", "\\(\\frac{Ax_1 + By_1 + C}{\\sqrt{A^2 + B^2}}\\)", "\\(\\frac{|Ax_1 + By_1 + C|}{A^2 + B^2}\\)", "\\(\\frac{Ax_1 + By_1 + C}{A^2 + B^2}\\)"], correct: 0 },
+        // Q17
+        { text: "If \\(\\theta\\) is the angle between two lines with slopes \\(m_1\\) and \\(m_2\\), then \\(\\tan\\theta =\\)", options: ["\\(\\left|\\frac{m_2 - m_1}{1 + m_1 m_2}\\right|\\)", "\\(\\left|\\frac{m_1 + m_2}{1 - m_1 m_2}\\right|\\)", "\\(\\left|\\frac{m_2 - m_1}{1 - m_1 m_2}\\right|\\)", "\\(\\left|\\frac{m_1 + m_2}{1 + m_1 m_2}\\right|\\)"], correct: 0 },
+        // Q18
+        { text: "The distance between two parallel lines \\(Ax + By + C_1 = 0\\) and \\(Ax + By + C_2 = 0\\) is:", options: ["\\(\\frac{|C_2 - C_1|}{\\sqrt{A^2 + B^2}}\\)", "\\(\\frac{|C_2 - C_1|}{A^2 + B^2}\\)", "\\(\\frac{|C_2 - C_1|}{\\sqrt{A^2 - B^2}}\\)", "\\(\\frac{|C_2 - C_1|}{A + B}\\)"], correct: 0 },
+        // Q19
+        { text: "The coordinates of the point dividing the segment joining \\(A(x_1, y_1)\\) and \\(B(x_2, y_2)\\) externally in ratio \\(m:n\\) are:", options: ["\\(\\left(\\frac{m x_2 - n x_1}{m - n}, \\frac{m y_2 - n y_1}{m - n}\\right)\\)", "\\(\\left(\\frac{m x_2 + n x_1}{m - n}, \\frac{m y_2 + n y_1}{m - n}\\right)\\)", "\\(\\left(\\frac{m x_1 - n x_2}{m - n}, \\frac{m y_1 - n y_2}{m - n}\\right)\\)", "\\(\\left(\\frac{m x_1 + n x_2}{m - n}, \\frac{m y_1 + n y_2}{m - n}\\right)\\)"], correct: 0 },
+        // Q20
+        { text: "The centroid of the triangle with vertices \\((x_1, y_1), (x_2, y_2), (x_3, y_3)\\) is:", options: ["\\(\\left(\\frac{x_1+x_2+x_3}{3}, \\frac{y_1+y_2+y_3}{3}\\right)\\)", "\\(\\left(\\frac{x_1+x_2+x_3}{2}, \\frac{y_1+y_2+y_3}{2}\\right)\\)", "\\(\\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)\\)", "\\(\\left(x_1+x_2+x_3, y_1+y_2+y_3\\right)\\)"], correct: 0 },
+        // Q21
+        { text: "The orthocentre of a triangle is the point of concurrence of:", options: ["Altitudes", "Medians", "Angle bisectors", "Perpendicular bisectors"], correct: 0 },
+        // Q22
+        { text: "The circumcentre of a triangle is the point of concurrence of:", options: ["Perpendicular bisectors of sides", "Medians", "Altitudes", "Angle bisectors"], correct: 0 },
+        // Q23
+        { text: "The incentre of a triangle is the point of concurrence of:", options: ["Internal angle bisectors", "Medians", "Altitudes", "Perpendicular bisectors"], correct: 0 },
+        // Q24
+        { text: "The equation of a line passing through \\((x_1, y_1)\\) and \\((x_2, y_2)\\) is:", options: ["\\(\\frac{y - y_1}{y_2 - y_1} = \\frac{x - x_1}{x_2 - x_1}\\)", "\\(\\frac{y - y_1}{x - x_1} = \\frac{y_2 - y_1}{x_2 - x_1}\\)", "\\(y - y_1 = m(x - x_1)\\) where \\(m = \\frac{x_2 - x_1}{y_2 - y_1}\\)", "All of the above"], correct: 0 },
+        // Q25
+        { text: "The slope of the line \\(Ax + By + C = 0\\) is:", options: ["\\(-\\frac{A}{B}\\)", "\\(\\frac{A}{B}\\)", "\\(-\\frac{B}{A}\\)", "\\(\\frac{B}{A}\\)"], correct: 0 },
+        // Q26
+        { text: "The y-intercept of the line \\(Ax + By + C = 0\\) is:", options: ["\\(-\\frac{C}{B}\\)", "\\(\\frac{C}{B}\\)", "\\(-\\frac{C}{A}\\)", "\\(\\frac{C}{A}\\)"], correct: 0 },
+        // Q27
+        { text: "The x-intercept of the line \\(Ax + By + C = 0\\) is:", options: ["\\(-\\frac{C}{A}\\)", "\\(\\frac{C}{A}\\)", "\\(-\\frac{C}{B}\\)", "\\(\\frac{C}{B}\\)"], correct: 0 },
+        // Q28
+        { text: "Three points \\(A(x_1, y_1), B(x_2, y_2), C(x_3, y_3)\\) are collinear if:", options: ["\\(\\frac{y_2 - y_1}{x_2 - x_1} = \\frac{y_3 - y_2}{x_3 - x_2}\\)", "\\(x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2) = 0\\)", "Both of the above", "None of the above"], correct: 0 },
+        // Q29
+        { text: "The equation of a line with slope \\(m\\) and y-intercept \\(c\\) is:", options: ["\\(y = mx + c\\)", "\\(y = c x + m\\)", "\\(x = m y + c\\)", "\\(y = m x - c\\)"], correct: 0 },
+        // Q30
+        { text: "The equation of a line with x-intercept \\(a\\) and y-intercept \\(b\\) is:", options: ["\\(\\frac{x}{a} + \\frac{y}{b} = 1\\)", "\\(\\frac{x}{a} - \\frac{y}{b} = 1\\)", "\\(\\frac{x}{a} + \\frac{y}{b} = 0\\)", "\\(\\frac{x}{a} - \\frac{y}{b} = 0\\)"], correct: 0 },
+        // Q31
+        { text: "The distance between \\((2, 3)\\) and \\((-1, -1)\\) is:", options: ["5", "\\(\\sqrt{25}\\) (same)", "3", "4"], correct: 0 },
+        // Q32
+        { text: "The midpoint of the segment joining \\((4,6)\\) and \\((8,10)\\) is:", options: ["(6,8)", "(12,16)", "(2,2)", "(6,4)"], correct: 0 },
+        // Q33
+        { text: "The slope of the line passing through \\((1,2)\\) and \\((3,4)\\) is:", options: ["1", "2", "\\(\\frac{1}{2}\\)", "-1"], correct: 0 },
+        // Q34
+        { text: "The equation of the line through \\((1,2)\\) with slope \\(3\\) is:", options: ["\\(y = 3x - 1\\)", "\\(y = 3x + 1\\)", "\\(y = -3x + 5\\)", "\\(y = 3x + 5\\)"], correct: 0 },
+        // Q35
+        { text: "The slope of the line \\(2x + 3y = 6\\) is:", options: ["\\(-\\frac{2}{3}\\)", "\\(\\frac{2}{3}\\)", "\\(-\\frac{3}{2}\\)", "\\(\\frac{3}{2}\\)"], correct: 0 },
+        // Q36
+        { text: "The y-intercept of the line \\(2x + 3y = 6\\) is:", options: ["2", "3", "6", "-2"], correct: 0 },
+        // Q37
+        { text: "The x-intercept of the line \\(4x - 5y = 20\\) is:", options: ["5", "-5", "4", "-4"], correct: 0 },
+        // Q38
+        { text: "The area of the triangle with vertices \\((0,0), (2,0), (0,3)\\) is:", options: ["3", "6", "1.5", "5"], correct: 0 },
+        // Q39
+        { text: "The centroid of the triangle with vertices \\((0,0), (2,0), (0,3)\\) is:", options: ["\\(\\left(\\frac{2}{3}, 1\\right)\\)", "(1,1)", "(2,3)", "\\(\\left(\\frac{2}{3}, \\frac{3}{2}\\right)\\)"], correct: 0 },
+        // Q40
+        { text: "The distance from the point \\((1,2)\\) to the line \\(3x + 4y - 5 = 0\\) is:", options: ["\\(\\frac{6}{5}\\)", "\\(\\frac{5}{6}\\)", "\\(\\frac{7}{5}\\)", "\\(\\frac{8}{5}\\)"], correct: 0 },
+        // Q41
+        { text: "The equation of a line parallel to \\(2x + 3y = 6\\) and passing through \\((1,1)\\) is:", options: ["\\(2x + 3y = 5\\)", "\\(2x + 3y = 7\\)", "\\(2x - 3y = -1\\)", "\\(2x - 3y = 5\\)"], correct: 0 },
+        // Q42
+        { text: "The equation of a line perpendicular to \\(2x + 3y = 6\\) and passing through \\((1,1)\\) is:", options: ["\\(3x - 2y = 1\\)", "\\(3x + 2y = 5\\)", "\\(2x - 3y = -1\\)", "\\(2x + 3y = 5\\)"], correct: 0 },
+        // Q43
+        { text: "If the slopes of two lines are \\(1\\) and \\(2\\), the tangent of the acute angle between them is:", options: ["\\(\\frac{1}{3}\\)", "\\(\\frac{3}{1}\\)", "3", "\\(\\frac{1}{2}\\)"], correct: 0 },
+        // Q44
+        { text: "Are the points \\((1,2), (3,4), (5,6)\\) collinear?", options: ["Yes", "No", "Cannot be determined", "Only if the line passes through origin"], correct: 0 },
+        // Q45
+        { text: "The point dividing the segment joining \\((2,3)\\) and \\((6,7)\\) in the ratio \\(1:3\\) internally is:", options: ["(3,4)", "(4,5)", "(5,6)", "(2,3)"], correct: 0 },
+        // Q46
+        { text: "The point dividing the segment joining \\((2,3)\\) and \\((6,7)\\) externally in the ratio \\(1:3\\) is:", options: ["(0,1)", "(4,5)", "(3,4)", "(5,6)"], correct: 0 },
+        // Q47
+        { text: "The distance between the parallel lines \\(3x + 4y + 5 = 0\\) and \\(3x + 4y - 7 = 0\\) is:", options: ["\\(\\frac{12}{5}\\)", "\\(\\frac{2}{5}\\)", "\\(\\frac{5}{12}\\)", "2"], correct: 0 },
+        // Q48
+        { text: "The equation of a line with slope \\(-2\\) and y-intercept \\(3\\) is:", options: ["\\(y = -2x + 3\\)", "\\(y = 2x + 3\\)", "\\(y = -3x + 2\\)", "\\(y = 3x - 2\\)"], correct: 0 },
+        // Q49
+        { text: "The equation of the line passing through \\((2,1)\\) and \\((4,5)\\) is:", options: ["\\(y = 2x - 3\\)", "\\(y = 2x + 3\\)", "\\(y = -2x + 5\\)", "\\(y = x - 1\\)"], correct: 0 },
+        // Q50
+        { text: "The slope of a line perpendicular to \\(2x + 3y = 6\\) is:", options: ["\\(\\frac{3}{2}\\)", "\\(-\\frac{3}{2}\\)", "\\(\\frac{2}{3}\\)", "\\(-\\frac{2}{3}\\)"], correct: 0 },
+        // Q51
+        { text: "The equation of the horizontal line through \\((4, -2)\\) is:", options: ["\\(y = -2\\)", "\\(x = 4\\)", "\\(y = 4\\)", "\\(x = -2\\)"], correct: 0 },
+        // Q52
+        { text: "The equation of the vertical line through \\((4, -2)\\) is:", options: ["\\(x = 4\\)", "\\(y = -2\\)", "\\(y = 4\\)", "\\(x = -2\\)"], correct: 0 },
+        // Q53
+        { text: "The slope of the line \\(4x - 2y + 7 = 0\\) is:", options: ["2", "-2", "\\(\\frac{1}{2}\\)", "\\(-\\frac{1}{2}\\)"], correct: 0 },
+        // Q54
+        { text: "The y-intercept of the line \\(4x - 2y + 7 = 0\\) is:", options: ["\\(\\frac{7}{2}\\)", "\\(-\\frac{7}{2}\\)", "\\(\\frac{7}{4}\\)", "\\(-\\frac{7}{4}\\)"], correct: 0 },
+        // Q55
+        { text: "The x-intercept of the line \\(4x - 2y + 7 = 0\\) is:", options: ["\\(-\\frac{7}{4}\\)", "\\(\\frac{7}{4}\\)", "\\(\\frac{7}{2}\\)", "\\(-\\frac{7}{2}\\)"], correct: 0 },
+        // Q56
+        { text: "The equation of a line with x-intercept \\(3\\) and y-intercept \\(5\\) is:", options: ["\\(\\frac{x}{3} + \\frac{y}{5} = 1\\)", "\\(\\frac{x}{3} - \\frac{y}{5} = 1\\)", "\\(3x + 5y = 1\\)", "\\(5x + 3y = 1\\)"], correct: 0 },
+        // Q57
+        { text: "Are the lines \\(2x+3y=6\\) and \\(4x+6y=12\\) parallel?", options: ["Yes", "No", "They are perpendicular", "They are the same line"], correct: 0 },
+        // Q58
+        { text: "Are the lines \\(2x+3y=6\\) and \\(3x-2y=5\\) perpendicular?", options: ["Yes", "No", "They are parallel", "They are the same line"], correct: 0 },
+        // Q59
+        { text: "The distance from the origin to the line \\(3x + 4y = 12\\) is:", options: ["\\(\\frac{12}{5}\\)", "\\(\\frac{5}{12}\\)", "12", "5"], correct: 0 },
+        // Q60
+        { text: "The area of the triangle with vertices \\((1,2), (3,4), (5,6)\\) is:", options: ["0", "1", "2", "3"], correct: 0 },
+        // Q61
+        { text: "The centroid of the triangle with vertices \\((1,1), (3,3), (5,5)\\) is:", options: ["(3,3)", "(9,9)", "(1,1)", "(5,5)"], correct: 0 },
+        // Q62
+        { text: "The orthocentre of the triangle with vertices \\((0,0), (3,0), (0,4)\\) is:", options: ["(0,0)", "(1,1)", "(3,4)", "(1.5,2)"], correct: 0 },
+        // Q63
+        { text: "The circumcentre of the triangle with vertices \\((0,0), (3,0), (0,4)\\) is:", options: ["(1.5,2)", "(0,0)", "(3,4)", "(1,2)"], correct: 0 },
+        // Q64
+        { text: "The incenter of the triangle with vertices \\((0,0), (3,0), (0,4)\\) is:", options: ["(1,1)", "(1.5,2)", "(0,0)", "(3,4)"], correct: 0 },
+        // Q65
+        { text: "The slope of a line making an angle of \\(45^\\circ\\) with the positive x-axis is:", options: ["1", "\\(\\sqrt{3}\\)", "\\(\\frac{1}{\\sqrt{3}}\\)", "0"], correct: 0 },
+        // Q66
+        { text: "The equation of a line through the origin with slope \\(m\\) is:", options: ["\\(y = mx\\)", "\\(y = -mx\\)", "\\(x = my\\)", "\\(y = m x + c\\)"], correct: 0 },
+        // Q67
+        { text: "The tangent of the acute angle between the lines \\(y = 2x + 1\\) and \\(y = -x + 3\\) is:", options: ["3", "\\(\\frac{1}{3}\\)", "\\(-\\frac{1}{3}\\)", "-3"], correct: 0 },
+        // Q68
+        { text: "The equation of a line with slope \\(-1\\) and passing through \\((2,3)\\) is:", options: ["\\(x + y = 5\\)", "\\(x - y = -1\\)", "\\(y = -x + 5\\)", "Both A and C"], correct: 0 },
+        // Q69
+        { text: "The equation of a line parallel to the x-axis and passing through \\((a, b)\\) is:", options: ["\\(y = b\\)", "\\(x = a\\)", "\\(y = a\\)", "\\(x = b\\)"], correct: 0 },
+        // Q70
+        { text: "The equation of a line parallel to the y-axis and passing through \\((a, b)\\) is:", options: ["\\(x = a\\)", "\\(y = b\\)", "\\(x = b\\)", "\\(y = a\\)"], correct: 0 },
+        // Q71
+        { text: "The slope of the line \\(\\frac{x}{a} + \\frac{y}{b} = 1\\) is:", options: ["\\(-\\frac{b}{a}\\)", "\\(\\frac{b}{a}\\)", "\\(-\\frac{a}{b}\\)", "\\(\\frac{a}{b}\\)"], correct: 0 },
+        // Q72
+        { text: "The x-intercept and y-intercept of the line \\(2x + 3y = 6\\) are respectively:", options: ["3, 2", "2, 3", "-3, -2", "6, 6"], correct: 0 },
+        // Q73
+        { text: "The length of the perpendicular from the origin to the line \\(12x + 5y = 13\\) is:", options: ["1", "\\(\\frac{13}{13}\\) = 1", "13", "5"], correct: 0 },
+        // Q74
+        { text: "The equation of a line passing through the intersection of \\(x + y = 1\\) and \\(2x - y = 2\\) and having slope \\(2\\) is:", options: ["\\(y = 2x\\)", "\\(y = 2x - 2\\)", "\\(y = 2x + 2\\)", "\\(y = -2x + 2\\)"], correct: 0 },
+        // Q75
+        { text: "The area of a triangle can also be expressed as \\(\\frac{1}{2}\\) times the absolute value of the determinant:", options: ["\\(\\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix}\\)", "\\(\\begin{vmatrix} x_1 & y_1 \\\\ x_2 & y_2 \\end{vmatrix}\\)", "\\(\\begin{vmatrix} x_1 & y_1 & 0 \\\\ x_2 & y_2 & 0 \\\\ x_3 & y_3 & 0 \\end{vmatrix}\\)", "\\(\\begin{vmatrix} x_1 & x_2 & x_3 \\\\ y_1 & y_2 & y_3 \\end{vmatrix}\\)"], correct: 0 },
+        // Q76
+        { text: "Three points are collinear if the determinant:", options: ["\\(\\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} = 0\\)", "\\(= 1\\)", "\\(> 0\\)", "\\(< 0\\)"], correct: 0 },
+        // Q77
+        { text: "The equation of a line with slope \\(0\\) and y-intercept \\(5\\) is:", options: ["\\(y = 5\\)", "\\(x = 5\\)", "\\(y = 0\\)", "\\(x = 0\\)"], correct: 0 },
+        // Q78
+        { text: "The equation of a line with undefined slope and x-intercept \\(-3\\) is:", options: ["\\(x = -3\\)", "\\(y = -3\\)", "\\(x = 3\\)", "\\(y = 3\\)"], correct: 0 },
+        // Q79
+        { text: "The distance between \\((2,3)\\) and \\((5,7)\\) is:", options: ["5", "4", "3", "6"], correct: 0 },
+        // Q80
+        { text: "The midpoint of the segment joining \\((-1,2)\\) and \\((3,-4)\\) is:", options: ["(1,-1)", "(2,-2)", "(1,1)", "(-1,1)"], correct: 0 },
+        // Q81
+        { text: "The slope of the line through \\((5,2)\\) and \\((5,6)\\) is:", options: ["Undefined", "0", "4", "1"], correct: 0 },
+        // Q82
+        { text: "The slope of the line through \\((2,7)\\) and \\((4,7)\\) is:", options: ["0", "Undefined", "2", "-2"], correct: 0 },
+        // Q83
+        { text: "The equation of the line through \\((3, -2)\\) with slope \\(0\\) is:", options: ["\\(y = -2\\)", "\\(x = 3\\)", "\\(y = 3\\)", "\\(x = -2\\)"], correct: 0 },
+        // Q84
+        { text: "The equation of the line through \\((3, -2)\\) with undefined slope is:", options: ["\\(x = 3\\)", "\\(y = -2\\)", "\\(y = 3\\)", "\\(x = -2\\)"], correct: 0 },
+        // Q85
+        { text: "The slope of a line perpendicular to a line with slope \\(\\frac{2}{3}\\) is:", options: ["\\(-\\frac{3}{2}\\)", "\\(\\frac{3}{2}\\)", "\\(-\\frac{2}{3}\\)", "\\(\\frac{2}{3}\\)"], correct: 0 },
+        // Q86
+        { text: "The slope of a line perpendicular to a line with slope \\(-4\\) is:", options: ["\\(\\frac{1}{4}\\)", "\\(-\\frac{1}{4}\\)", "4", "-4"], correct: 0 },
+        // Q87
+        { text: "The equation of a line perpendicular to \\(y = 3x + 2\\) and passing through the origin is:", options: ["\\(y = -\\frac{1}{3}x\\)", "\\(y = \\frac{1}{3}x\\)", "\\(y = 3x\\)", "\\(y = -3x\\)"], correct: 0 },
+        // Q88
+        { text: "The angle between lines with slopes \\(1\\) and \\(-1\\) is:", options: ["\\(90^\\circ\\)", "\\(45^\\circ\\)", "\\(0^\\circ\\)", "\\(180^\\circ\\)"], correct: 0 },
+        // Q89
+        { text: "The angle between lines with slopes \\(2\\) and \\(-\\frac{1}{2}\\) is:", options: ["\\(90^\\circ\\)", "\\(45^\\circ\\)", "\\(60^\\circ\\)", "\\(30^\\circ\\)"], correct: 0 },
+        // Q90
+        { text: "The area of the triangle formed by the coordinate axes and the line \\(\\frac{x}{a} + \\frac{y}{b} = 1\\) is:", options: ["\\(\\frac{1}{2} |ab|\\)", "\\(|ab|\\)", "\\(\\frac{1}{2} |a+b|\\)", "\\(|a+b|\\)"], correct: 0 },
+        // Q91
+        { text: "The orthocentre of the triangle with vertices \\((0,0), (a,0), (0,b)\\) is:", options: ["(0,0)", "(a,b)", "(a/2, b/2)", "(a,0)"], correct: 0 },
+        // Q92
+        { text: "The circumcentre of the triangle with vertices \\((0,0), (a,0), (0,b)\\) is:", options: ["(a/2, b/2)", "(0,0)", "(a,b)", "(a/2, 0)"], correct: 0 },
+        // Q93
+        { text: "The incenter of the right triangle with vertices \\((0,0), (a,0), (0,b)\\) is:", options: ["\\(\\left(\\frac{a b}{a+b+\\sqrt{a^2+b^2}}, \\frac{a b}{a+b+\\sqrt{a^2+b^2}}\\right)\\)", "(a/2, b/2)", "(0,0)", "(a, b)"], correct: 0 },
+        // Q94
+        { text: "The intercept form of a line is:", options: ["\\(\\frac{x}{a} + \\frac{y}{b} = 1\\)", "\\(a x + b y = 1\\)", "\\(x + y = a + b\\)", "\\(\\frac{x}{a} - \\frac{y}{b} = 1\\)"], correct: 0 },
+        // Q95
+        { text: "The slope of a line parallel to \\(3x - 4y + 7 = 0\\) is:", options: ["\\(\\frac{3}{4}\\)", "\\(-\\frac{3}{4}\\)", "\\(\\frac{4}{3}\\)", "\\(-\\frac{4}{3}\\)"], correct: 0 },
+        // Q96
+        { text: "The slope of a line perpendicular to \\(3x - 4y + 7 = 0\\) is:", options: ["\\(-\\frac{4}{3}\\)", "\\(\\frac{4}{3}\\)", "\\(\\frac{3}{4}\\)", "\\(-\\frac{3}{4}\\)"], correct: 0 },
+        // Q97
+        { text: "The distance from \\((2,3)\\) to the line \\(4x + 3y - 10 = 0\\) is:", options: ["\\(\\frac{7}{5}\\)", "\\(\\frac{5}{7}\\)", "\\(\\frac{1}{5}\\)", "\\(\\frac{12}{5}\\)"], correct: 0 },
+        // Q98
+        { text: "The reflection of the point \\((x, y)\\) across the x-axis is:", options: ["(x, -y)", "(-x, y)", "(-x, -y)", "(y, x)"], correct: 0 },
+        // Q99
+        { text: "The reflection of the point \\((x, y)\\) across the y-axis is:", options: ["(-x, y)", "(x, -y)", "(-x, -y)", "(y, x)"], correct: 0 },
+        // Q100
+        { text: "The reflection of the point \\((x, y)\\) across the origin is:", options: ["(-x, -y)", "(x, -y)", "(-x, y)", "(y, x)"], correct: 0 }
+    ];
+
+    // -------------------------------------------------------------
+    // SHUFFLE, RENDER, SUBMIT, RESET (same functions as above)
+    // -------------------------------------------------------------
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    let shuffledQuestions = [];
+
+    function prepareQuestions() {
+        shuffledQuestions = questionsData.map(q => {
+            const optArray = q.options.map((opt, idx) => ({ option: opt, originalIndex: idx }));
+            shuffleArray(optArray);
+            const newOptions = optArray.map(item => item.option);
+            const newCorrect = optArray.findIndex(item => item.originalIndex === q.correct);
+            return { text: q.text, options: newOptions, correct: newCorrect };
+        });
+    }
+
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        let html = '';
+        shuffledQuestions.forEach((q, index) => {
+            const qNum = index + 1;
+            html += `<div class="question-block" id="q${qNum}">`;
+            html += `<div class="q-header"><span class="q-number">${qNum}.</span> <span class="q-text">${q.text}</span></div>`;
+            html += `<div class="options">`;
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, optIndex) => {
+                const radioId = `q${qNum}_${optIndex}`;
+                html += `<label class="option-label" for="${radioId}" id="label_${radioId}">`;
+                html += `<input type="radio" name="q${qNum}" id="${radioId}" value="${optIndex}">`;
+                html += `<span class="letter">${letters[optIndex]}.</span> <span>${opt}</span>`;
+                html += `</label>`;
+            });
+            html += `</div></div>`;
+        });
+        container.innerHTML = html;
+        if (window.MathJax && MathJax.Hub) MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+
+    prepareQuestions();
+    renderQuestions();
+
+    function clearHighlights() {
+        document.querySelectorAll('.option-label').forEach(label => {
+            label.classList.remove('correct-answer', 'wrong-answer');
+        });
+    }
+
+    function submitTest() {
+        clearHighlights();
+        let correct = 0, wrong = 0, unattempted = 0;
+        const total = shuffledQuestions.length;
+        for (let i = 0; i < total; i++) {
+            const qNum = i + 1;
+            const radios = document.getElementsByName(`q${qNum}`);
+            let selected = null;
+            for (const radio of radios) {
+                if (radio.checked) {
+                    selected = parseInt(radio.value);
+                    break;
+                }
+            }
+            const correctIdx = shuffledQuestions[i].correct;
+            const correctLabel = document.getElementById(`label_q${qNum}_${correctIdx}`);
+            if (correctLabel) correctLabel.classList.add('correct-answer');
+            if (selected !== null) {
+                if (selected === correctIdx) correct++;
+                else {
+                    wrong++;
+                    const wrongLabel = document.getElementById(`label_q${qNum}_${selected}`);
+                    if (wrongLabel) wrongLabel.classList.add('wrong-answer');
+                }
+            } else {
+                unattempted++;
+            }
+        }
+        const score = correct - 0.25 * wrong;
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        document.getElementById('scoreDisplay').textContent = `${score.toFixed(2)} / ${total}`;
+        document.getElementById('detailDisplay').textContent = `You got ${correct} correct, ${wrong} wrong, and ${unattempted} unattempted.`;
+        document.getElementById('correctCount').textContent = correct;
+        document.getElementById('wrongCount').textContent = wrong;
+        document.getElementById('unattemptedCount').textContent = unattempted;
+
+        const posCount = [0,0,0,0];
+        shuffledQuestions.forEach(q => { posCount[q.correct]++; });
+        document.getElementById('answerStat').innerHTML = `
+            <div style="font-size:15px; color:#0f172a;">
+                <strong>✅ Correct‑answer distribution:</strong>
+                <span class="highlight-correct">A: ${posCount[0]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">B: ${posCount[1]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">C: ${posCount[2]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">D: ${posCount[3]}</span>
+                &nbsp;&nbsp;<span style="font-size:13px; color:#64748b;">(shuffled for realism)</span>
+            </div>
+        `;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetTest() {
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+        clearHighlights();
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('correctCount').textContent = '0';
+        document.getElementById('wrongCount').textContent = '0';
+        document.getElementById('unattemptedCount').textContent = '0';
+        document.getElementById('scoreDisplay').textContent = '';
+        document.getElementById('detailDisplay').textContent = '';
+        document.getElementById('answerStat').innerHTML = '';
+        prepareQuestions();
+        renderQuestions();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>
