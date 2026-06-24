@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Differentiation – 100 MCQs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f5f9;
+            padding: 20px;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 35px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 4px;
+            color: #0f172a;
+        }
+        .subhead {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+        }
+        .question-block {
+            background: #f8fafc;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border-left: 6px solid #3b82f6;
+            transition: background 0.15s;
+        }
+        .question-block:hover {
+            background: #f1f5f9;
+        }
+        .q-header {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .q-number {
+            color: #2563eb;
+            min-width: 40px;
+            font-weight: 700;
+        }
+        .q-text {
+            flex: 1;
+            line-height: 1.5;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 25px;
+            padding-left: 12px;
+        }
+        @media (max-width: 650px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s, border-left 0.2s;
+            border-left: 4px solid transparent;
+        }
+        .option-label:hover {
+            background: #e2e8f0;
+        }
+        .option-label input[type="radio"] {
+            accent-color: #2563eb;
+            transform: scale(1.15);
+            flex-shrink: 0;
+        }
+        .option-label .letter {
+            font-weight: 600;
+            color: #334155;
+            min-width: 20px;
+        }
+        .correct-answer {
+            background-color: #d4edda !important;
+            border-left: 4px solid #28a745 !important;
+        }
+        .wrong-answer {
+            background-color: #f8d7da !important;
+            border-left: 4px solid #dc3545 !important;
+        }
+        .btn-group {
+            text-align: center;
+            margin: 35px 0 20px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+        }
+        .btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+        }
+        .btn:active {
+            transform: scale(0.97);
+        }
+        .btn-reset {
+            background: #64748b;
+            box-shadow: 0 6px 16px rgba(100, 116, 139, 0.3);
+        }
+        .btn-reset:hover {
+            background: #475569;
+        }
+        #result {
+            margin-top: 30px;
+            padding: 28px 20px;
+            background: #f8fafc;
+            border-radius: 18px;
+            border: 2px solid #cbd5e1;
+            display: none;
+            text-align: center;
+        }
+        #result .score {
+            font-size: 40px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        #result .detail {
+            font-size: 18px;
+            margin-top: 8px;
+            color: #334155;
+        }
+        #result .correct {
+            color: #16a34a;
+        }
+        #result .wrong {
+            color: #dc2626;
+        }
+        #result .unattempted {
+            color: #6b7280;
+        }
+        #answerStat {
+            margin-top: 16px;
+            padding: 14px 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 2px solid #2563eb;
+            display: inline-block;
+            font-weight: 500;
+        }
+        #answerStat .highlight-correct {
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin: 0 2px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Differentiation</h1>
+        <div class="subhead">
+            100 MCQs – FAST‑NUCES Entry Test &nbsp;|&nbsp;
+            <span style="color:#2563eb;">+1</span> correct,
+            <span style="color:#dc2626;">−0.25</span> wrong,
+            <span style="color:#6b7280;">0</span> unattempted
+            <br />
+            <span style="font-size:14px; color:#64748b;">Options shuffled – correct answers highlighted after submission</span>
+        </div>
+
+        <form id="testForm">
+            <div id="questionsContainer"></div>
+            <div class="btn-group">
+                <button type="button" class="btn" onclick="submitTest()">📊 Submit &amp; Check Score</button>
+                <button type="button" class="btn btn-reset" onclick="resetTest()">🔄 Reset All</button>
+            </div>
+        </form>
+
+        <div id="result">
+            <div class="score" id="scoreDisplay"></div>
+            <div class="detail" id="detailDisplay"></div>
+            <div style="margin-top:14px; font-size:17px;">
+                <span class="correct">✔ Correct: <span id="correctCount">0</span></span> &nbsp;|&nbsp;
+                <span class="wrong">✘ Wrong: <span id="wrongCount">0</span></span> &nbsp;|&nbsp;
+                <span class="unattempted">⏺ Unattempted: <span id="unattemptedCount">0</span></span>
+            </div>
+            <div id="answerStat"></div>
+        </div>
+
+        <div class="footer">Designed for FAST‑NUCES entry test • Unit 2: Differentiation</div>
+    </div>
+
+    <script>
+        // -------------------------------------------------------------
+        // QUESTIONS DATA – 100 MCQs from Differentiation (LaTeX source)
+        // Each entry: { text, options: [A, B, C, D], correct: 0..3 }
+        // -------------------------------------------------------------
+        const questionsData = [
+            // Q1: First principle
+            { text: "The derivative of \\(f(x)\\) from first principle is:", options: ["\\(\\lim_{h \\to 0} \\frac{f(x+h)-f(x)}{h}\\)", "\\(\\lim_{h \\to \\infty} \\frac{f(x+h)-f(x)}{h}\\)", "\\(\\lim_{x \\to a} \\frac{f(x)-f(a)}{x-a}\\)", "\\(\\lim_{h \\to 0} \\frac{f(x)-f(x-h)}{h}\\)"], correct: 0 },
+            // Q2: Notation
+            { text: "The derivative of \\(y\\) with respect to \\(x\\) can be written as:", options: ["\\(\\frac{dy}{dx}\\)", "\\(\\frac{dx}{dy}\\)", "\\(\\frac{\\partial y}{\\partial x}\\)", "\\(\\Delta y / \\Delta x\\)"], correct: 0 },
+            // Q3: Derivative represents
+            { text: "The derivative of a function at a point represents:", options: ["The slope of tangent at that point", "The area under the curve", "The y-intercept", "The average rate of change"], correct: 0 },
+            // Q4: Derivative of constant
+            { text: "\\(\\frac{d}{dx}(5) =\\)", options: ["0", "5", "1", "Undefined"], correct: 0 },
+            // Q5: Power rule
+            { text: "\\(\\frac{d}{dx}(x^3) =\\)", options: ["\\(3x^2\\)", "\\(x^2\\)", "\\(3x^3\\)", "\\(2x^3\\)"], correct: 0 },
+            // Q6: Power rule negative
+            { text: "\\(\\frac{d}{dx}(x^{-2}) =\\)", options: ["\\(-2x^{-3}\\)", "\\(2x^{-3}\\)", "\\(-2x^{-1}\\)", "\\(-\\frac{2}{x^2}\\)"], correct: 0 },
+            // Q7: sqrt(x)
+            { text: "\\(\\frac{d}{dx}(\\sqrt{x}) =\\)", options: ["\\(\\frac{1}{2\\sqrt{x}}\\)", "\\(\\frac{1}{\\sqrt{x}}\\)", "\\(\\frac{2}{\\sqrt{x}}\\)", "\\(\\frac{1}{2x}\\)"], correct: 0 },
+            // Q8: 1/x
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{1}{x}\\right) =\\)", options: ["\\(-\\frac{1}{x^2}\\)", "\\(\\frac{1}{x^2}\\)", "\\(-\\frac{1}{x}\\)", "\\(\\frac{1}{x}\\)"], correct: 0 },
+            // Q9: x^0
+            { text: "\\(\\frac{d}{dx}(x^0) =\\)", options: ["0", "1", "\\(x^{-1}\\)", "Undefined"], correct: 0 },
+            // Q10: Constant multiple
+            { text: "\\(\\frac{d}{dx}(3x^4) =\\)", options: ["\\(12x^3\\)", "\\(3x^3\\)", "\\(12x^4\\)", "\\(4x^3\\)"], correct: 0 },
+            // Q11: Sum rule
+            { text: "\\(\\frac{d}{dx}(x^2 + x^3) =\\)", options: ["\\(2x + 3x^2\\)", "\\(2x + x^2\\)", "\\(x + 3x^2\\)", "\\(2x + 3x\\)"], correct: 0 },
+            // Q12: Difference rule
+            { text: "\\(\\frac{d}{dx}(x^5 - x^2) =\\)", options: ["\\(5x^4 - 2x\\)", "\\(5x^4 - 2x^2\\)", "\\(5x^4 + 2x\\)", "\\(x^4 - x\\)"], correct: 0 },
+            // Q13: sin x
+            { text: "\\(\\frac{d}{dx}(\\sin x) =\\)", options: ["\\(\\cos x\\)", "\\(-\\cos x\\)", "\\(\\sin x\\)", "\\(-\\sin x\\)"], correct: 0 },
+            // Q14: cos x
+            { text: "\\(\\frac{d}{dx}(\\cos x) =\\)", options: ["\\(-\\sin x\\)", "\\(\\sin x\\)", "\\(\\cos x\\)", "\\(-\\cos x\\)"], correct: 0 },
+            // Q15: tan x
+            { text: "\\(\\frac{d}{dx}(\\tan x) =\\)", options: ["\\(\\sec^2 x\\)", "\\(\\csc^2 x\\)", "\\(-\\sec^2 x\\)", "\\(\\sec x \\tan x\\)"], correct: 0 },
+            // Q16: sec x
+            { text: "\\(\\frac{d}{dx}(\\sec x) =\\)", options: ["\\(\\sec x \\tan x\\)", "\\(\\sec^2 x\\)", "\\(\\tan^2 x\\)", "\\(-\\sec x \\tan x\\)"], correct: 0 },
+            // Q17: cot x
+            { text: "\\(\\frac{d}{dx}(\\cot x) =\\)", options: ["\\(-\\csc^2 x\\)", "\\(\\csc^2 x\\)", "\\(-\\sec^2 x\\)", "\\(\\sec^2 x\\)"], correct: 0 },
+            // Q18: csc x
+            { text: "\\(\\frac{d}{dx}(\\csc x) =\\)", options: ["\\(-\\csc x \\cot x\\)", "\\(\\csc x \\cot x\\)", "\\(-\\sec x \\tan x\\)", "\\(\\sec x \\tan x\\)"], correct: 0 },
+            // Q19: e^x
+            { text: "\\(\\frac{d}{dx}(e^x) =\\)", options: ["\\(e^x\\)", "\\(x e^{x-1}\\)", "\\(e^x \\ln e\\)", "\\(e^{x+1}\\)"], correct: 0 },
+            // Q20: ln x
+            { text: "\\(\\frac{d}{dx}(\\ln x) =\\)", options: ["\\(\\frac{1}{x}\\)", "\\(x\\)", "\\(\\ln x\\)", "\\(\\frac{1}{x^2}\\)"], correct: 0 },
+
+            // Q21: Product rule
+            { text: "If \\(y = u v\\), where \\(u\\) and \\(v\\) are functions of \\(x\\), then \\(\\frac{dy}{dx} =\\)", options: ["\\(u'v + uv'\\)", "\\(u'v - uv'\\)", "\\(u'v'\\)", "\\(u v' + v u'\\)"], correct: 0 },
+            // Q22: Quotient rule
+            { text: "If \\(y = \\frac{u}{v}\\), then \\(\\frac{dy}{dx} =\\)", options: ["\\(\\frac{u'v - uv'}{v^2}\\)", "\\(\\frac{u'v + uv'}{v^2}\\)", "\\(\\frac{u'v - uv'}{v}\\)", "\\(\\frac{uv' - u'v}{v^2}\\)"], correct: 0 },
+            // Q23: Chain rule
+            { text: "If \\(y = f(g(x))\\), then \\(\\frac{dy}{dx} =\\)", options: ["\\(f'(g(x)) \\cdot g'(x)\\)", "\\(f'(x) \\cdot g'(x)\\)", "\\(f'(g(x)) + g'(x)\\)", "\\(f'(g(x)) / g'(x)\\)"], correct: 0 },
+            // Q24: x^2 sin x
+            { text: "\\(\\frac{d}{dx}(x^2 \\sin x) =\\)", options: ["\\(2x \\sin x + x^2 \\cos x\\)", "\\(2x \\sin x - x^2 \\cos x\\)", "\\(2x \\cos x + x^2 \\sin x\\)", "\\(2x \\cos x - x^2 \\sin x\\)"], correct: 0 },
+            // Q25: x/(x^2+1)
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{x}{x^2+1}\\right) =\\)", options: ["\\(\\frac{1 - x^2}{(x^2+1)^2}\\)", "\\(\\frac{1 + x^2}{(x^2+1)^2}\\)", "\\(\\frac{x^2 - 1}{(x^2+1)^2}\\)", "\\(\\frac{2x}{(x^2+1)^2}\\)"], correct: 0 },
+            // Q26: sin(2x)
+            { text: "\\(\\frac{d}{dx}(\\sin 2x) =\\)", options: ["\\(2 \\cos 2x\\)", "\\(\\cos 2x\\)", "\\(-2 \\cos 2x\\)", "\\(2 \\sin 2x\\)"], correct: 0 },
+            // Q27: cos(3x)
+            { text: "\\(\\frac{d}{dx}(\\cos 3x) =\\)", options: ["\\(-3 \\sin 3x\\)", "\\(3 \\sin 3x\\)", "\\(-3 \\cos 3x\\)", "\\(\\sin 3x\\)"], correct: 0 },
+            // Q28: tan(4x)
+            { text: "\\(\\frac{d}{dx}(\\tan 4x) =\\)", options: ["\\(4 \\sec^2 4x\\)", "\\(\\sec^2 4x\\)", "\\(4 \\csc^2 4x\\)", "\\(-4 \\sec^2 4x\\)"], correct: 0 },
+            // Q29: e^{2x}
+            { text: "\\(\\frac{d}{dx}(e^{2x}) =\\)", options: ["\\(2e^{2x}\\)", "\\(e^{2x}\\)", "\\(2e^{x}\\)", "\\(e^{2x} \\ln 2\\)"], correct: 0 },
+            // Q30: ln(3x)
+            { text: "\\(\\frac{d}{dx}(\\ln 3x) =\\)", options: ["\\(\\frac{1}{x}\\)", "\\(\\frac{3}{x}\\)", "\\(\\frac{1}{3x}\\)", "\\(3x\\)"], correct: 0 },
+            // Q31: sin^2 x
+            { text: "\\(\\frac{d}{dx}(\\sin^2 x) =\\)", options: ["\\(2 \\sin x \\cos x\\)", "\\(2 \\sin x\\)", "\\(\\sin x \\cos x\\)", "\\(\\cos^2 x\\)"], correct: 0 },
+            // Q32: cos^2 x
+            { text: "\\(\\frac{d}{dx}(\\cos^2 x) =\\)", options: ["\\(-2 \\sin x \\cos x\\)", "\\(2 \\sin x \\cos x\\)", "\\(-2 \\cos x \\sin x\\)", "\\(-2 \\cos x\\)"], correct: 0 },
+            // Q33: sec^2 x
+            { text: "\\(\\frac{d}{dx}(\\sec^2 x) =\\)", options: ["\\(2 \\sec^2 x \\tan x\\)", "\\(2 \\sec x \\tan x\\)", "\\(\\sec^2 x \\tan x\\)", "\\(2 \\sec^2 x\\)"], correct: 0 },
+            // Q34: tan^{-1} x
+            { text: "\\(\\frac{d}{dx}(\\tan^{-1} x) =\\)", options: ["\\(\\frac{1}{1+x^2}\\)", "\\(\\frac{1}{1-x^2}\\)", "\\(\\frac{x}{1+x^2}\\)", "\\(\\frac{1}{\\sec^2 x}\\)"], correct: 0 },
+            // Q35: sin^{-1} x
+            { text: "\\(\\frac{d}{dx}(\\sin^{-1} x) =\\)", options: ["\\(\\frac{1}{\\sqrt{1-x^2}}\\)", "\\(\\frac{-1}{\\sqrt{1-x^2}}\\)", "\\(\\frac{1}{\\sqrt{x^2-1}}\\)", "\\(\\frac{1}{1+x^2}\\)"], correct: 0 },
+            // Q36: cos^{-1} x
+            { text: "\\(\\frac{d}{dx}(\\cos^{-1} x) =\\)", options: ["\\(-\\frac{1}{\\sqrt{1-x^2}}\\)", "\\(\\frac{1}{\\sqrt{1-x^2}}\\)", "\\(\\frac{1}{1+x^2}\\)", "\\(-\\frac{1}{1+x^2}\\)"], correct: 0 },
+            // Q37: x ln x
+            { text: "\\(\\frac{d}{dx}(x \\ln x) =\\)", options: ["\\(\\ln x + 1\\)", "\\(\\ln x\\)", "\\(1 + \\ln x\\)", "\\(x \\ln x + 1\\)"], correct: 0 },
+            // Q38: e^x sin x
+            { text: "\\(\\frac{d}{dx}(e^x \\sin x) =\\)", options: ["\\(e^x(\\sin x + \\cos x)\\)", "\\(e^x(\\sin x - \\cos x)\\)", "\\(e^x \\cos x\\)", "\\(e^x \\sin x\\)"], correct: 0 },
+            // Q39: sin x / x
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{\\sin x}{x}\\right) =\\)", options: ["\\(\\frac{x \\cos x - \\sin x}{x^2}\\)", "\\(\\frac{x \\cos x + \\sin x}{x^2}\\)", "\\(\\frac{\\cos x - \\sin x}{x^2}\\)", "\\(\\frac{x \\sin x - \\cos x}{x^2}\\)"], correct: 0 },
+            // Q40: (x^2+1)^3
+            { text: "\\(\\frac{d}{dx}(x^2+1)^3 =\\)", options: ["\\(6x(x^2+1)^2\\)", "\\(3(x^2+1)^2\\)", "\\(6x(x^2+1)\\)", "\\(3x(x^2+1)^2\\)"], correct: 0 },
+            // Q41: sin(3x+2)
+            { text: "\\(\\frac{d}{dx}(\\sin(3x+2)) =\\)", options: ["\\(3 \\cos(3x+2)\\)", "\\(\\cos(3x+2)\\)", "\\(-3 \\cos(3x+2)\\)", "\\(3 \\sin(3x+2)\\)"], correct: 0 },
+            // Q42: e^{x^2}
+            { text: "\\(\\frac{d}{dx}(e^{x^2}) =\\)", options: ["\\(2x e^{x^2}\\)", "\\(e^{x^2}\\)", "\\(2x e^{x}\\)", "\\(x^2 e^{x^2}\\)"], correct: 0 },
+            // Q43: ln(x^2+1)
+            { text: "\\(\\frac{d}{dx}(\\ln(x^2+1)) =\\)", options: ["\\(\\frac{2x}{x^2+1}\\)", "\\(\\frac{1}{x^2+1}\\)", "\\(\\frac{2x}{x^2}\\)", "\\(\\frac{1}{x}\\)"], correct: 0 },
+            // Q44: ln(sin x)
+            { text: "\\(\\frac{d}{dx}(\\ln(\\sin x)) =\\)", options: ["\\(\\cot x\\)", "\\(-\\cot x\\)", "\\(\\tan x\\)", "\\(-\\tan x\\)"], correct: 0 },
+            // Q45: ln(cos x)
+            { text: "\\(\\frac{d}{dx}(\\ln(\\cos x)) =\\)", options: ["\\(-\\tan x\\)", "\\(\\tan x\\)", "\\(-\\cot x\\)", "\\(\\cot x\\)"], correct: 0 },
+            // Q46: sin^3 x
+            { text: "\\(\\frac{d}{dx}(\\sin^3 x) =\\)", options: ["\\(3 \\sin^2 x \\cos x\\)", "\\(3 \\sin^2 x\\)", "\\(3 \\cos^2 x \\sin x\\)", "\\(\\sin^2 x \\cos x\\)"], correct: 0 },
+            // Q47: cos^3 x
+            { text: "\\(\\frac{d}{dx}(\\cos^3 x) =\\)", options: ["\\(-3 \\cos^2 x \\sin x\\)", "\\(3 \\cos^2 x \\sin x\\)", "\\(-3 \\cos^2 x\\)", "\\(3 \\sin^2 x \\cos x\\)"], correct: 0 },
+            // Q48: tan^2 x
+            { text: "\\(\\frac{d}{dx}(\\tan^2 x) =\\)", options: ["\\(2 \\tan x \\sec^2 x\\)", "\\(2 \\tan x\\)", "\\(2 \\sec^2 x\\)", "\\(\\tan x \\sec^2 x\\)"], correct: 0 },
+            // Q49: e^x / x
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{e^x}{x}\\right) =\\)", options: ["\\(\\frac{x e^x - e^x}{x^2}\\)", "\\(\\frac{x e^x + e^x}{x^2}\\)", "\\(\\frac{e^x - x e^x}{x^2}\\)", "\\(\\frac{e^x}{x^2}\\)"], correct: 0 },
+            // Q50: ln x / x
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{\\ln x}{x}\\right) =\\)", options: ["\\(\\frac{1 - \\ln x}{x^2}\\)", "\\(\\frac{1 + \\ln x}{x^2}\\)", "\\(\\frac{\\ln x - 1}{x^2}\\)", "\\(\\frac{1}{x^2}\\)"], correct: 0 },
+
+            // Q51: x^5
+            { text: "\\(\\frac{d}{dx}(x^5) =\\)", options: ["\\(5x^4\\)", "\\(x^4\\)", "\\(5x^5\\)", "\\(4x^5\\)"], correct: 0 },
+            // Q52: 4x^3 - 2x^2 + x - 7
+            { text: "\\(\\frac{d}{dx}(4x^3 - 2x^2 + x - 7) =\\)", options: ["\\(12x^2 - 4x + 1\\)", "\\(12x^2 - 4x\\)", "\\(4x^2 - 2x + 1\\)", "\\(12x^2 + 4x + 1\\)"], correct: 0 },
+            // Q53: 1/x^2
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{1}{x^2}\\right) =\\)", options: ["\\(-2x^{-3}\\)", "\\(2x^{-3}\\)", "\\(-2x^{-1}\\)", "\\(-x^{-3}\\)"], correct: 0 },
+            // Q54: sqrt(x^3)
+            { text: "\\(\\frac{d}{dx}(\\sqrt{x^3}) =\\)", options: ["\\(\\frac{3}{2}\\sqrt{x}\\)", "\\(\\frac{1}{2}\\sqrt{x}\\)", "\\(\\frac{3}{2}x^{1/2}\\)", "\\(x^{1/2}\\)"], correct: 0 },
+            // Q55: x^{3/2}
+            { text: "\\(\\frac{d}{dx}(x^{3/2}) =\\)", options: ["\\(\\frac{3}{2}x^{1/2}\\)", "\\(\\frac{3}{2}x^{3/2}\\)", "\\(\\frac{1}{2}x^{1/2}\\)", "\\(\\frac{3}{2}x^{-1/2}\\)"], correct: 0 },
+            // Q56: 2^x
+            { text: "\\(\\frac{d}{dx}(2^x) =\\)", options: ["\\(2^x \\ln 2\\)", "\\(2^x\\)", "\\(x 2^{x-1}\\)", "\\(2^x \\log_2 e\\)"], correct: 0 },
+            // Q57: 3^x
+            { text: "\\(\\frac{d}{dx}(3^x) =\\)", options: ["\\(3^x \\ln 3\\)", "\\(3^x\\)", "\\(x 3^{x-1}\\)", "\\(3^x \\log_3 e\\)"], correct: 0 },
+            // Q58: e^{x^2+1}
+            { text: "\\(\\frac{d}{dx}(e^{x^2 + 1}) =\\)", options: ["\\(2x e^{x^2 + 1}\\)", "\\(e^{x^2 + 1}\\)", "\\(2x e^{x^2}\\)", "\\(x e^{x^2 + 1}\\)"], correct: 0 },
+            // Q59: ln(2x^2)
+            { text: "\\(\\frac{d}{dx}(\\ln(2x^2)) =\\)", options: ["\\(\\frac{2}{x}\\)", "\\(\\frac{1}{x}\\)", "\\(\\frac{4}{x}\\)", "\\(\\frac{2}{x^2}\\)"], correct: 0 },
+            // Q60: sin(x^2)
+            { text: "\\(\\frac{d}{dx}(\\sin(x^2)) =\\)", options: ["\\(2x \\cos(x^2)\\)", "\\(\\cos(x^2)\\)", "\\(-2x \\cos(x^2)\\)", "\\(2x \\sin(x^2)\\)"], correct: 0 },
+            // Q61: cos(x^3)
+            { text: "\\(\\frac{d}{dx}(\\cos(x^3)) =\\)", options: ["\\(-3x^2 \\sin(x^3)\\)", "\\(3x^2 \\sin(x^3)\\)", "\\(-3x^2 \\cos(x^3)\\)", "\\(3x^2 \\cos(x^3)\\)"], correct: 0 },
+            // Q62: tan(x^2)
+            { text: "\\(\\frac{d}{dx}(\\tan(x^2)) =\\)", options: ["\\(2x \\sec^2(x^2)\\)", "\\(\\sec^2(x^2)\\)", "\\(2x \\csc^2(x^2)\\)", "\\(2x \\tan(x^2) \\sec^2(x^2)\\)"], correct: 0 },
+            // Q63: sec(2x)
+            { text: "\\(\\frac{d}{dx}(\\sec(2x)) =\\)", options: ["\\(2 \\sec(2x) \\tan(2x)\\)", "\\(\\sec(2x) \\tan(2x)\\)", "\\(-2 \\sec(2x) \\tan(2x)\\)", "\\(2 \\sec^2(2x)\\)"], correct: 0 },
+            // Q64: csc(x^2)
+            { text: "\\(\\frac{d}{dx}(\\csc(x^2)) =\\)", options: ["\\(-2x \\csc(x^2) \\cot(x^2)\\)", "\\(2x \\csc(x^2) \\cot(x^2)\\)", "\\(-2x \\csc^2(x^2)\\)", "\\(2x \\csc(x^2)\\)"], correct: 0 },
+            // Q65: ln(sin x) (already Q44, we'll change to ln(tan x) maybe? But we'll keep as is, we need 100 unique questions. We can use ln(sec x) etc. But let's keep it; it's fine.
+            // Actually we already have ln(sin x) and ln(cos x). We'll add ln(sec x) and ln(csc x) later.
+            // For now we keep the existing; we'll replace Q65 with something else to avoid duplicate.
+            // Let's change Q65 to derivative of ln(sec x)
+            { text: "\\(\\frac{d}{dx}(\\ln(\\sec x)) =\\)", options: ["\\(\\tan x\\)", "\\(-\\tan x\\)", "\\(\\sec x \\tan x\\)", "\\(\\cot x\\)"], correct: 0 },
+            // Q66: derivative of ln(csc x)
+            { text: "\\(\\frac{d}{dx}(\\ln(\\csc x)) =\\)", options: ["\\(-\\cot x\\)", "\\(\\cot x\\)", "\\(-\\csc x \\cot x\\)", "\\(\\csc x \\cot x\\)"], correct: 0 },
+            // Q67: derivative of ln(tan x) – we already have in LaTeX but we'll put here.
+            { text: "\\(\\frac{d}{dx}(\\ln(\\tan x)) =\\)", options: ["\\(\\sec x \\csc x\\)", "\\(\\frac{1}{\\tan x} \\sec^2 x\\)", "\\(\\cot x \\sec^2 x\\)", "\\(\\csc^2 x\\)"], correct: 0 },
+            // Q68: sin^{-1}(2x)
+            { text: "\\(\\frac{d}{dx}(\\sin^{-1}(2x)) =\\)", options: ["\\(\\frac{2}{\\sqrt{1-4x^2}}\\)", "\\(\\frac{1}{\\sqrt{1-4x^2}}\\)", "\\(\\frac{2}{\\sqrt{1-x^2}}\\)", "\\(\\frac{1}{\\sqrt{1-2x^2}}\\)"], correct: 0 },
+            // Q69: tan^{-1}(3x)
+            { text: "\\(\\frac{d}{dx}(\\tan^{-1}(3x)) =\\)", options: ["\\(\\frac{3}{1+9x^2}\\)", "\\(\\frac{1}{1+9x^2}\\)", "\\(\\frac{3}{1+3x^2}\\)", "\\(\\frac{1}{1+3x^2}\\)"], correct: 0 },
+            // Q70: cos^{-1}(x^2)
+            { text: "\\(\\frac{d}{dx}(\\cos^{-1}(x^2)) =\\)", options: ["\\(-\\frac{2x}{\\sqrt{1-x^4}}\\)", "\\(\\frac{2x}{\\sqrt{1-x^4}}\\)", "\\(-\\frac{2x}{\\sqrt{1-x^2}}\\)", "\\(\\frac{2x}{\\sqrt{1-x^2}}\\)"], correct: 0 },
+            // Q71: e^{3x} sin x
+            { text: "\\(\\frac{d}{dx}(e^{3x} \\sin x) =\\)", options: ["\\(e^{3x}(3 \\sin x + \\cos x)\\)", "\\(e^{3x}(3 \\sin x - \\cos x)\\)", "\\(e^{3x}(\\sin x + 3 \\cos x)\\)", "\\(3e^{3x} \\sin x\\)"], correct: 0 },
+            // Q72: x^2 e^x
+            { text: "\\(\\frac{d}{dx}(x^2 e^x) =\\)", options: ["\\(e^x(x^2 + 2x)\\)", "\\(e^x(x^2 - 2x)\\)", "\\(2x e^x\\)", "\\(x^2 e^x\\)"], correct: 0 },
+            // Q73: cos x / x
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{\\cos x}{x}\\right) =\\)", options: ["\\(\\frac{-x \\sin x - \\cos x}{x^2}\\)", "\\(\\frac{x \\sin x - \\cos x}{x^2}\\)", "\\(\\frac{-x \\sin x + \\cos x}{x^2}\\)", "\\(\\frac{x \\cos x - \\sin x}{x^2}\\)"], correct: 0 },
+            // Q74: x / sin x
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{x}{\\sin x}\\right) =\\)", options: ["\\(\\frac{\\sin x - x \\cos x}{\\sin^2 x}\\)", "\\(\\frac{\\sin x + x \\cos x}{\\sin^2 x}\\)", "\\(\\frac{x \\cos x - \\sin x}{\\sin^2 x}\\)", "\\(\\frac{1}{\\cos x}\\)"], correct: 0 },
+            // Q75: ln x / e^x
+            { text: "\\(\\frac{d}{dx}\\left(\\frac{\\ln x}{e^x}\\right) =\\)", options: ["\\(\\frac{1/x - \\ln x}{e^x}\\)", "\\(\\frac{1/x + \\ln x}{e^x}\\)", "\\(\\frac{1}{x e^x}\\)", "\\(\\frac{1 - x \\ln x}{x e^x}\\)"], correct: 0 },
+
+            // Q76: Slope of tangent to y = x^2 at x=1
+            { text: "The slope of tangent to \\(y = x^2\\) at \\(x = 1\\) is:", options: ["2", "1", "0", "4"], correct: 0 },
+            // Q77: Slope of tangent to y = sin x at x = π/2
+            { text: "The slope of tangent to \\(y = \\sin x\\) at \\(x = \\frac{\\pi}{2}\\) is:", options: ["0", "1", "-1", "\\(\\infty\\)"], correct: 0 },
+            // Q78: Equation of tangent to y = x^2 at (1,1)
+            { text: "The equation of tangent to \\(y = x^2\\) at \\((1,1)\\) is:", options: ["\\(y = 2x - 1\\)", "\\(y = 2x + 1\\)", "\\(y = x + 1\\)", "\\(y = x - 1\\)"], correct: 0 },
+            // Q79: Equation of tangent to y = sin x at x=0
+            { text: "The equation of tangent to \\(y = \\sin x\\) at \\(x = 0\\) is:", options: ["\\(y = x\\)", "\\(y = 1\\)", "\\(y = -x\\)", "\\(y = 0\\)"], correct: 0 },
+            // Q80: Rate of change of area of circle
+            { text: "The rate of change of area \\(A = \\pi r^2\\) with respect to radius \\(r\\) is:", options: ["\\(2\\pi r\\)", "\\(\\pi r\\)", "\\(2r\\)", "\\(2\\pi\\)"], correct: 0 },
+            // Q81: Rate of change of volume of sphere
+            { text: "The rate of change of volume \\(V = \\frac{4}{3}\\pi r^3\\) with respect to radius \\(r\\) is:", options: ["\\(4\\pi r^2\\)", "\\(\\frac{4}{3}\\pi r^2\\)", "\\(4\\pi r\\)", "\\(\\pi r^2\\)"], correct: 0 },
+            // Q82: Velocity from displacement
+            { text: "If \\(s(t) = t^2 + 3t\\), the velocity at \\(t = 2\\) is:", options: ["7", "5", "6", "8"], correct: 0 },
+            // Q83: Acceleration from velocity
+            { text: "If \\(v(t) = 3t^2 + 2t\\), the acceleration at \\(t = 1\\) is:", options: ["8", "5", "6", "4"], correct: 0 },
+            // Q84: Increasing function condition
+            { text: "A function \\(f(x)\\) is increasing on an interval if \\(f'(x) > 0\\). For \\(f(x) = x^3\\), \\(f'(x)\\) is:", options: ["\\(3x^2 \\ge 0\\)", "\\(3x^2 > 0\\) for \\(x\\neq0\\), so increasing everywhere", "\\(3x^2 < 0\\)", "\\(3x^2 = 0\\)"], correct: 0 },
+            // Q85: Critical point of x^2-4x+3
+            { text: "The critical points of \\(f(x) = x^2 - 4x + 3\\) occur at:", options: ["\\(x = 2\\)", "\\(x = 1\\)", "\\(x = 3\\)", "\\(x = 0\\)"], correct: 0 },
+            // Q86: Max/Min test for x=2
+            { text: "For \\(f(x) = x^2 - 4x + 3\\), the point \\(x = 2\\) is a:", options: ["Minimum", "Maximum", "Saddle point", "Point of inflection"], correct: 0 },
+            // Q87: Slope of tangent to y=e^x at x=0
+            { text: "The slope of tangent to \\(y = e^x\\) at \\(x = 0\\) is:", options: ["1", "0", "e", "-1"], correct: 0 },
+            // Q88: Slope of tangent to y=ln x at x=1
+            { text: "The slope of tangent to \\(y = \\ln x\\) at \\(x = 1\\) is:", options: ["1", "0", "\\(\\ln 1\\)", "-1"], correct: 0 },
+            // Q89: Equation of tangent to y=e^x at (0,1)
+            { text: "The equation of tangent to \\(y = e^x\\) at \\((0,1)\\) is:", options: ["\\(y = x + 1\\)", "\\(y = x\\)", "\\(y = e x + 1\\)", "\\(y = e x\\)"], correct: 0 },
+            // Q90: Rate of change of circumference
+            { text: "The rate of change of circumference \\(C = 2\\pi r\\) with respect to radius is:", options: ["\\(2\\pi\\)", "\\(2r\\)", "\\(\\pi\\)", "\\(2\\pi r\\)"], correct: 0 },
+            // Q91: Velocity from s(t) at t=2
+            { text: "If \\(s(t) = t^3 - 6t^2 + 9t\\), the velocity at \\(t = 2\\) is:", options: ["-3", "3", "9", "-9"], correct: 0 },
+            // Q92: Acceleration from s(t) at t=2
+            { text: "If \\(s(t) = t^3 - 6t^2 + 9t\\), the acceleration at \\(t = 2\\) is:", options: ["0", "6", "-6", "12"], correct: 0 },
+            // Q93: Derivative of velocity
+            { text: "Derivative of velocity gives:", options: ["Acceleration", "Jerk", "Speed", "Displacement"], correct: 0 },
+            // Q94: f'(1) for f(x)=x^3-3x^2+2
+            { text: "If \\(f(x) = x^3 - 3x^2 + 2\\), then \\(f'(1) =\\)", options: ["-3", "3", "0", "1"], correct: 0 },
+            // Q95: f'(0) for f=e^{2x} cos x
+            { text: "If \\(f(x) = e^{2x} \\cos x\\), then \\(f'(0) =\\)", options: ["2", "1", "0", "-1"], correct: 0 },
+            // Q96: f'(1) for f=ln(x^2+1)
+            { text: "If \\(f(x) = \\ln(x^2+1)\\), then \\(f'(1) =\\)", options: ["1", "0", "\\(\\frac{1}{2}\\)", "2"], correct: 0 },
+            // Q97: f'(π/2) for f=x sin x
+            { text: "If \\(f(x) = x \\sin x\\), then \\(f'(\\frac{\\pi}{2}) =\\)", options: ["1", "0", "\\(\\frac{\\pi}{2}\\)", "-1"], correct: 0 },
+            // Q98: derivative of tan x at π/4
+            { text: "\\(\\frac{d}{dx}(\\tan x)\\) at \\(x = \\frac{\\pi}{4}\\) is:", options: ["2", "1", "\\(\\sqrt{2}\\)", "0"], correct: 0 },
+            // Q99: derivative of sec x at 0
+            { text: "\\(\\frac{d}{dx}(\\sec x)\\) at \\(x = 0\\) is:", options: ["0", "1", "-1", "\\(\\infty\\)"], correct: 0 },
+            // Q100: derivative of ln(x+sqrt(x^2+1))
+            { text: "If \\(y = \\ln(x + \\sqrt{x^2+1})\\), then \\(\\frac{dy}{dx} =\\)", options: ["\\(\\frac{1}{\\sqrt{x^2+1}}\\)", "\\(\\frac{1}{x + \\sqrt{x^2+1}}\\)", "\\(\\frac{x}{\\sqrt{x^2+1}}\\)", "\\(\\frac{1}{x}\\)"], correct: 0 }
+        ];
+
+        // -------------------------------------------------------------
+        // SHUFFLE & RENDER LOGIC
+        // -------------------------------------------------------------
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        let shuffledQuestions = [];
+
+        function prepareQuestions() {
+            shuffledQuestions = questionsData.map(q => {
+                const optArray = q.options.map((opt, idx) => ({ option: opt, originalIndex: idx }));
+                shuffleArray(optArray);
+                const newOptions = optArray.map(item => item.option);
+                const newCorrect = optArray.findIndex(item => item.originalIndex === q.correct);
+                return { text: q.text, options: newOptions, correct: newCorrect };
+            });
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            let html = '';
+            shuffledQuestions.forEach((q, index) => {
+                const qNum = index + 1;
+                html += `<div class="question-block" id="q${qNum}">`;
+                html += `<div class="q-header"><span class="q-number">${qNum}.</span> <span class="q-text">${q.text}</span></div>`;
+                html += `<div class="options">`;
+                const letters = ['A', 'B', 'C', 'D'];
+                q.options.forEach((opt, optIndex) => {
+                    const radioId = `q${qNum}_${optIndex}`;
+                    html += `<label class="option-label" for="${radioId}" id="label_${radioId}">`;
+                    html += `<input type="radio" name="q${qNum}" id="${radioId}" value="${optIndex}">`;
+                    html += `<span class="letter">${letters[optIndex]}.</span> <span>${opt}</span>`;
+                    html += `</label>`;
+                });
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+            if (window.MathJax && MathJax.Hub) MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+
+        prepareQuestions();
+        renderQuestions();
+
+        // Clear highlights helper
+        function clearHighlights() {
+            document.querySelectorAll('.option-label').forEach(label => {
+                label.classList.remove('correct-answer', 'wrong-answer');
+            });
+        }
+
+        // -------------------------------------------------------------
+        // SUBMIT FUNCTION
+        // -------------------------------------------------------------
+        function submitTest() {
+            clearHighlights();
+
+            let correct = 0,
+                wrong = 0,
+                unattempted = 0;
+            const total = shuffledQuestions.length;
+
+            for (let i = 0; i < total; i++) {
+                const qNum = i + 1;
+                const radios = document.getElementsByName(`q${qNum}`);
+                let selected = null;
+                for (const radio of radios) {
+                    if (radio.checked) {
+                        selected = parseInt(radio.value);
+                        break;
+                    }
+                }
+
+                const correctIdx = shuffledQuestions[i].correct;
+                const correctLabel = document.getElementById(`label_q${qNum}_${correctIdx}`);
+                if (correctLabel) correctLabel.classList.add('correct-answer');
+
+                if (selected !== null) {
+                    if (selected === correctIdx) {
+                        correct++;
+                    } else {
+                        wrong++;
+                        const wrongLabel = document.getElementById(`label_q${qNum}_${selected}`);
+                        if (wrongLabel) wrongLabel.classList.add('wrong-answer');
+                    }
+                } else {
+                    unattempted++;
+                }
+            }
+
+            const score = correct - 0.25 * wrong;
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            document.getElementById('scoreDisplay').textContent = `${score.toFixed(2)} / ${total}`;
+            document.getElementById('detailDisplay').textContent = `You got ${correct} correct, ${wrong} wrong, and ${unattempted} unattempted.`;
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('wrongCount').textContent = wrong;
+            document.getElementById('unattemptedCount').textContent = unattempted;
+
+            // Distribution
+            const posCount = [0, 0, 0, 0];
+            shuffledQuestions.forEach(q => { posCount[q.correct]++; });
+            document.getElementById('answerStat').innerHTML = `
+                <div style="font-size:15px; color:#0f172a;">
+                    <strong>✅ Correct‑answer distribution:</strong>
+                    <span class="highlight-correct">A: ${posCount[0]}</span> &nbsp;|&nbsp;
+                    <span class="highlight-correct">B: ${posCount[1]}</span> &nbsp;|&nbsp;
+                    <span class="highlight-correct">C: ${posCount[2]}</span> &nbsp;|&nbsp;
+                    <span class="highlight-correct">D: ${posCount[3]}</span>
+                    &nbsp;&nbsp;<span style="font-size:13px; color:#64748b;">(shuffled for realism)</span>
+                </div>
+            `;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // -------------------------------------------------------------
+        // RESET FUNCTION
+        // -------------------------------------------------------------
+        function resetTest() {
+            document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+            clearHighlights();
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('correctCount').textContent = '0';
+            document.getElementById('wrongCount').textContent = '0';
+            document.getElementById('unattemptedCount').textContent = '0';
+            document.getElementById('scoreDisplay').textContent = '';
+            document.getElementById('detailDisplay').textContent = '';
+            document.getElementById('answerStat').innerHTML = '';
+            prepareQuestions();
+            renderQuestions();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
