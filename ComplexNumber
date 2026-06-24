@@ -1,1 +1,448 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST Entry Test – Complex Numbers (100 MCQs)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+        .subhead {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+        .question-block {
+            background: #f8fafc;
+            padding: 18px 20px;
+            margin-bottom: 14px;
+            border-radius: 10px;
+            border-left: 5px solid #3b82f6;
+            transition: 0.2s;
+        }
+        .question-block:hover {
+            background: #f1f5f9;
+        }
+        .q-header {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .q-number {
+            color: #2563eb;
+            min-width: 40px;
+        }
+        .q-text {
+            flex: 1;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+            padding-left: 10px;
+        }
+        @media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .option-label:hover {
+            background: #e2e8f0;
+        }
+        .option-label input[type="radio"] {
+            accent-color: #2563eb;
+            transform: scale(1.1);
+            flex-shrink: 0;
+        }
+        .submit-area {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+        .btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 50px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+        }
+        .btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        #result {
+            margin-top: 25px;
+            padding: 25px;
+            background: #f1f5f9;
+            border-radius: 16px;
+            border: 2px solid #cbd5e1;
+            display: none;
+            text-align: center;
+        }
+        #result .score {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        #result .detail {
+            font-size: 18px;
+            margin-top: 8px;
+            color: #334155;
+        }
+        #result .correct { color: #16a34a; }
+        #result .wrong { color: #dc2626; }
+        #result .unattempted { color: #6b7280; }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 25px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+<div class="container">
+    <h1>🧪 FAST-NUCES Entry Test</h1>
+    <div class="subhead">Complex Numbers – 100 MCQs &nbsp;|&nbsp; <span style="color:#2563eb;">+1</span> correct, <span style="color:#dc2626;">−0.25</span> wrong, <span style="color:#6b7280;">0</span> unattempted</div>
+
+    <form id="testForm">
+        <div id="questionsContainer"></div>
+        <div class="submit-area">
+            <button type="button" class="btn" onclick="submitTest()">📊 Submit &amp; Check Score</button>
+        </div>
+    </form>
+
+    <div id="result">
+        <div class="score" id="scoreDisplay"></div>
+        <div class="detail" id="detailDisplay"></div>
+        <div style="margin-top:12px;">
+            <span class="correct">✔ Correct: <span id="correctCount">0</span></span> &nbsp;|&nbsp;
+            <span class="wrong">✘ Wrong: <span id="wrongCount">0</span></span> &nbsp;|&nbsp;
+            <span class="unattempted">⏺ Unattempted: <span id="unattemptedCount">0</span></span>
+        </div>
+    </div>
+
+    <div class="footer">Designed for FAST‑NUCES entry test preparation • 100 questions</div>
+</div>
+
+<script>
+    // -------------------------------------------------------------
+    // QUESTIONS DATA (100 MCQs) – generated from the LaTeX test
+    // Each entry: { text, options: [A, B, C, D], correct: 0..3 }
+    // -------------------------------------------------------------
+    const questions = [
+        // Q1
+        { text: "The complex number \\(3 - 4i\\) in ordered pair notation is:", options: ["(3, -4)", "(-3, 4)", "(3, 4)", "(-3, -4)"], correct: 0 },
+        // Q2
+        { text: "The real and imaginary parts of \\(\\frac{1}{2} - \\frac{3}{2}i\\) are:", options: ["\\(\\frac{1}{2}, -\\frac{3}{2}\\)", "\\(-\\frac{1}{2}, \\frac{3}{2}\\)", "\\(\\frac{1}{2}, \\frac{3}{2}\\)", "\\(-\\frac{1}{2}, -\\frac{3}{2}\\)"], correct: 0 },
+        // Q3
+        { text: "The value of \\(i^2\\) is:", options: ["1", "-1", "i", "-i"], correct: 1 },
+        // Q4
+        { text: "\\(i^{2026}\\) equals:", options: ["1", "-1", "i", "-i"], correct: 1 },
+        // Q5
+        { text: "If \\((2x + y) + (x - y)i = 4 - i\\), then \\(x\\) and \\(y\\) are:", options: ["\\(x=1, y=2\\)", "\\(x=2, y=1\\)", "\\(x=1, y=1\\)", "\\(x=2, y=2\\)"], correct: 0 },
+        // Q6
+        { text: "The conjugate of \\(z = -5 + 7i\\) is:", options: ["\\(5 - 7i\\)", "\\(-5 - 7i\\)", "\\(5 + 7i\\)", "\\(-7 + 5i\\)"], correct: 1 },
+        // Q7
+        { text: "\\((3 + 2i) + (4 - 3i) =\\)", options: ["\\(7 - i\\)", "\\(7 + 5i\\)", "\\(1 + 5i\\)", "\\(1 - i\\)"], correct: 0 },
+        // Q8
+        { text: "\\((6 - 2i) - (3 + 4i) =\\)", options: ["\\(3 - 6i\\)", "\\(3 + 2i\\)", "\\(9 + 2i\\)", "\\(9 - 6i\\)"], correct: 0 },
+        // Q9
+        { text: "\\((2 + 3i)(1 - 4i) =\\)", options: ["\\(14 - 5i\\)", "\\(14 + 5i\\)", "\\(-10 - 5i\\)", "\\(-10 + 5i\\)"], correct: 0 },
+        // Q10
+        { text: "\\(\\frac{1 + i}{1 - i} =\\)", options: ["\\(i\\)", "\\(-i\\)", "\\(1\\)", "\\(-1\\)"], correct: 0 },
+        // Q11
+        { text: "\\(|3 - 4i| =\\)", options: ["5", "7", "1", "25"], correct: 0 },
+        // Q12
+        { text: "If \\(z = 1 + 2i\\), then \\(|z|\\) equals \\(|-z|\\) because:", options: ["\\(|z| = |\\overline{z}|\\)", "\\(|z| = |-z|\\)", "\\(z = -z\\)", "\\(z + (-z) = 0\\)"], correct: 1 },
+        // Q13
+        { text: "\\(\\overline{(3 + 2i) + (4 - i)} =\\)", options: ["\\(7 - i\\)", "\\(7 + i\\)", "\\(-7 + i\\)", "\\(-7 - i\\)"], correct: 0 },
+        // Q14
+        { text: "Which property is illustrated by \\((2 + 3i) + (4 + i) = (4 + i) + (2 + 3i)\\)?", options: ["Associative", "Commutative", "Distributive", "Identity"], correct: 1 },
+        // Q15
+        { text: "The property \\( (z_1 z_2) z_3 = z_1 (z_2 z_3) \\) is called:", options: ["Commutative", "Associative", "Distributive", "Inverse"], correct: 1 },
+        // Q16
+        { text: "\\(3(2 + 5i) = 6 + 15i\\) demonstrates the:", options: ["Commutative property", "Associative property", "Distributive property", "Identity property"], correct: 2 },
+        // Q17
+        { text: "The additive inverse of \\( -2 + 6i \\) is:", options: ["\\(2 - 6i\\)", "\\(-2 - 6i\\)", "\\(2 + 6i\\)", "\\(-2 + 6i\\)"], correct: 0 },
+        // Q18
+        { text: "The multiplicative inverse of \\(i\\) is:", options: ["\\(-i\\)", "\\(i\\)", "\\(1\\)", "\\(-1\\)"], correct: 0 },
+        // Q19
+        { text: "The real part of \\(\\frac{1}{i}\\) is:", options: ["0", "1", "-1", "\\(\\frac{1}{2}\\)"], correct: 0 },
+        // Q20
+        { text: "The imaginary part of \\(\\frac{1}{1+i}\\) is:", options: ["\\(\\frac{1}{2}\\)", "\\(-\\frac{1}{2}\\)", "\\(\\frac{1}{2}i\\)", "\\(-\\frac{1}{2}i\\)"], correct: 1 },
+        // Q21
+        { text: "If \\( (a + b) + (a - b)i = 5 + i \\), find \\(a\\) and \\(b\\):", options: ["\\(a=3, b=2\\)", "\\(a=2, b=3\\)", "\\(a=3, b=4\\)", "\\(a=4, b=1\\)"], correct: 0 },
+        // Q22
+        { text: "\\(|(2+3i)(1-2i)| =\\)", options: ["\\(\\sqrt{65}\\)", "13", "5", "25"], correct: 0 },
+        // Q23
+        { text: "\\(\\overline{(1+2i)(3-4i)} =\\)", options: ["\\(11 - 2i\\)", "\\(11 + 2i\\)", "\\(-11 - 2i\\)", "\\(-11 + 2i\\)"], correct: 0 },
+        // Q24
+        { text: "\\(\\left|\\frac{1+i}{1-i}\\right| =\\)", options: ["1", "\\(\\sqrt{2}\\)", "2", "0"], correct: 0 },
+        // Q25
+        { text: "\\(\\overline{\\frac{1}{1+i}} =\\)", options: ["\\(\\frac{1+i}{2}\\)", "\\(\\frac{1-i}{2}\\)", "\\(\\frac{-1+i}{2}\\)", "\\(\\frac{-1-i}{2}\\)"], correct: 1 },
+        // Q26
+        { text: "\\(i^{4n+3}\\) for integer \\(n\\) equals:", options: ["1", "-1", "i", "-i"], correct: 3 },
+        // Q27
+        { text: "For complex numbers \\(z_1, z_2\\), which inequality is always true?", options: ["\\(|z_1 + z_2| \\le |z_1| + |z_2|\\)", "\\(|z_1 + z_2| \\ge |z_1| + |z_2|\\)", "\\(|z_1 + z_2| = |z_1| + |z_2|\\)", "\\(|z_1 + z_2| \\le ||z_1| - |z_2||\\)"], correct: 0 },
+        // Q28
+        { text: "\\(\\overline{\\overline{2 - 3i}} =\\)", options: ["\\(2 - 3i\\)", "\\(2 + 3i\\)", "\\(-2 - 3i\\)", "\\(-2 + 3i\\)"], correct: 0 },
+        // Q29
+        { text: "\\(|i| =\\)", options: ["1", "0", "-1", "\\(\\sqrt{2}\\)"], correct: 0 },
+        // Q30
+        { text: "If \\(n\\) is an even integer, then \\(i^n\\) is:", options: ["Real", "Purely imaginary", "Neither real nor imaginary", "Undefined"], correct: 0 },
+        // Q31
+        { text: "The additive identity in complex numbers is:", options: ["0", "1", "i", "-i"], correct: 0 },
+        // Q32
+        { text: "The multiplicative identity in complex numbers is:", options: ["1", "0", "i", "-1"], correct: 0 },
+        // Q33
+        { text: "For \\(z = x + iy\\), \\(z - \\overline{z} =\\)", options: ["\\(2iy\\)", "\\(-2iy\\)", "\\(2x\\)", "\\(-2x\\)"], correct: 0 },
+        // Q34
+        { text: "For \\(z = x + iy\\), \\(z + \\overline{z} =\\)", options: ["\\(2x\\)", "\\(2iy\\)", "\\(2y\\)", "\\(-2iy\\)"], correct: 0 },
+        // Q35
+        { text: "\\(| \\overline{z} | =\\)", options: ["\\(|z|\\)", "\\(-|z|\\)", "\\(|z|^2\\)", "\\(z\\)"], correct: 0 },
+
+        // Q36
+        { text: "Which of the following illustrates the commutative property of multiplication?", options: ["\\((2+3i)(4-i) = (4-i)(2+3i)\\)", "\\((2+3i)+ (4-i) = (4-i)+(2+3i)\\)", "\\((2+3i) \\times 1 = 2+3i\\)", "\\((2+3i) + 0 = 2+3i\\)"], correct: 0 },
+        // Q37
+        { text: "\\([(1+2i)+(3+4i)] + (5+i) = (1+2i) + [(3+4i)+(5+i)]\\) demonstrates:", options: ["Commutative property", "Associative property", "Distributive property", "Identity property"], correct: 1 },
+        // Q38
+        { text: "Expand \\((1+2i)(3+i)\\):", options: ["\\(1 + 7i\\)", "\\(5 + 7i\\)", "\\(1 + 5i\\)", "\\(5 + 5i\\)"], correct: 0 },
+        // Q39
+        { text: "The sum of \\(z\\) and its additive inverse is:", options: ["0", "1", "i", "\\(2z\\)"], correct: 0 },
+        // Q40
+        { text: "The product of \\(z\\) and its multiplicative inverse (for \\(z \\neq 0\\)) is:", options: ["1", "0", "z", "\\(z^2\\)"], correct: 0 },
+        // Q41
+        { text: "If \\(z_1 = 1+2i\\) and \\(z_2 = 1-2i\\), then \\(z_1 = \\overline{z_2}\\). This implies:", options: ["\\(z_1\\) is real", "\\(z_1\\) is purely imaginary", "\\(z_2\\) is the conjugate of \\(z_1\\)", "\\(z_1 + z_2 = 0\\)"], correct: 2 },
+        // Q42
+        { text: "For \\(z = a+bi\\), \\(z \\overline{z} =\\)", options: ["\\(a^2 + b^2\\)", "\\(a^2 - b^2\\)", "\\(a^2 + b^2 + 2abi\\)", "\\(a^2 - b^2 - 2abi\\)"], correct: 0 },
+        // Q43
+        { text: "The real part of \\(z\\) is:", options: ["\\(\\frac{z+\\overline{z}}{2}\\)", "\\(\\frac{z-\\overline{z}}{2}\\)", "\\(\\frac{z+\\overline{z}}{2i}\\)", "\\(\\frac{z-\\overline{z}}{2i}\\)"], correct: 0 },
+        // Q44
+        { text: "The imaginary part of \\(z\\) is:", options: ["\\(\\frac{z-\\overline{z}}{2i}\\)", "\\(\\frac{z+\\overline{z}}{2}\\)", "\\(\\frac{z-\\overline{z}}{2}\\)", "\\(\\frac{z+\\overline{z}}{2i}\\)"], correct: 0 },
+        // Q45
+        { text: "\\(|z_1 z_2| =\\)", options: ["\\(|z_1||z_2|\\)", "\\(|z_1| + |z_2|\\)", "\\(|z_1|/|z_2|\\)", "\\(\\sqrt{|z_1||z_2|}\\)"], correct: 0 },
+        // Q46
+        { text: "\\(\\overline{z_1 + z_2} =\\)", options: ["\\(\\overline{z_1} + \\overline{z_2}\\)", "\\(\\overline{z_1} - \\overline{z_2}\\)", "\\(\\overline{z_1} \\overline{z_2}\\)", "\\(\\overline{z_1} / \\overline{z_2}\\)"], correct: 0 },
+        // Q47
+        { text: "\\(\\overline{z_1 z_2} =\\)", options: ["\\(\\overline{z_1} \\overline{z_2}\\)", "\\(\\overline{z_1} + \\overline{z_2}\\)", "\\(\\overline{z_1} - \\overline{z_2}\\)", "\\(\\overline{z_1} / \\overline{z_2}\\)"], correct: 0 },
+        // Q48
+        { text: "\\(|z|^2 =\\)", options: ["\\(z \\overline{z}\\)", "\\(z + \\overline{z}\\)", "\\(z - \\overline{z}\\)", "\\(z / \\overline{z}\\)"], correct: 0 },
+        // Q49
+        { text: "Which of the following is true for all complex numbers \\(z_1, z_2\\)?", options: ["\\(|z_1 - z_2| \\ge ||z_1| - |z_2||\\)", "\\(|z_1 - z_2| \\le ||z_1| - |z_2||\\)", "\\(|z_1 - z_2| = ||z_1| - |z_2||\\)", "\\(|z_1 - z_2| = |z_1| + |z_2|\\)"], correct: 0 },
+        // Q50
+        { text: "\\(|z^n| =\\)", options: ["\\(|z|^n\\)", "\\(n|z|\\)", "\\(|z| + n\\)", "\\(|z|/n\\)"], correct: 0 },
+        // Q51
+        { text: "\\(\\overline{z^n} =\\)", options: ["\\((\\overline{z})^n\\)", "\\(n \\overline{z}\\)", "\\(\\overline{z} + n\\)", "\\(\\overline{z}/n\\)"], correct: 0 },
+        // Q52
+        { text: "Two complex numbers \\(a+bi\\) and \\(c+di\\) are equal if and only if:", options: ["\\(a=c\\) and \\(b=d\\)", "\\(a=d\\) and \\(b=c\\)", "\\(a+b = c+d\\)", "\\(a-b = c-d\\)"], correct: 0 },
+        // Q53
+        { text: "The additive inverse of \\((3+2i) + (1-4i)\\) is:", options: ["\\(-4 + 2i\\)", "\\(4 - 2i\\)", "\\(-4 - 2i\\)", "\\(4 + 2i\\)"], correct: 0 },
+        // Q54
+        { text: "The multiplicative inverse of \\(1+i\\) is:", options: ["\\(\\frac{1-i}{2}\\)", "\\(\\frac{-1+i}{2}\\)", "\\(\\frac{1+i}{2}\\)", "\\(\\frac{-1-i}{2}\\)"], correct: 0 },
+        // Q55
+        { text: "Simplify \\(i^{100} + i^{101} + i^{102} + i^{103}\\):", options: ["0", "1", "i", "-1"], correct: 0 },
+        // Q56
+        { text: "If \\(\\overline{z} = 3 - 4i\\), then \\(|z| =\\)", options: ["5", "7", "1", "25"], correct: 0 },
+        // Q57
+        { text: "If \\(z = x+iy\\), the imaginary part of \\(i \\overline{z}\\) is:", options: ["\\(x\\)", "\\(-x\\)", "\\(y\\)", "\\(-y\\)"], correct: 0 },
+        // Q58
+        { text: "\\((3+4i)(3-4i) =\\)", options: ["25", "\\(9 + 16i\\)", "\\(9 - 16i\\)", "7"], correct: 0 },
+        // Q59
+        { text: "Simplify \\(\\frac{2}{1+i} + \\frac{1}{1-i}\\):", options: ["\\(\\frac{3}{2} - \\frac{1}{2}i\\)", "\\(\\frac{3}{2} + \\frac{1}{2}i\\)", "\\(\\frac{1}{2} - \\frac{3}{2}i\\)", "\\(\\frac{1}{2} + \\frac{3}{2}i\\)"], correct: 0 },
+        // Q60
+        { text: "The real part of \\(\\frac{1}{2+3i}\\) is:", options: ["\\(\\frac{2}{13}\\)", "\\(-\\frac{2}{13}\\)", "\\(\\frac{3}{13}\\)", "\\(-\\frac{3}{13}\\)"], correct: 0 },
+        // Q61
+        { text: "\\(\\left| \\frac{1+i}{2-i} \\right| =\\)", options: ["\\(\\sqrt{\\frac{2}{5}}\\)", "\\(\\sqrt{\\frac{5}{2}}\\)", "\\(\\frac{2}{5}\\)", "\\(\\frac{5}{2}\\)"], correct: 0 },
+        // Q62
+        { text: "\\(\\overline{\\frac{1}{2-3i}} =\\)", options: ["\\(\\frac{1}{2+3i}\\)", "\\(\\frac{1}{2-3i}\\)", "\\(\\frac{2+3i}{13}\\)", "\\(\\frac{2-3i}{13}\\)"], correct: 0 },
+        // Q63
+        { text: "If \\(z = \\frac{1}{1+i}\\), then \\(z + \\overline{z} =\\)", options: ["1", "0", "2", "-1"], correct: 0 },
+        // Q64
+        { text: "If \\(z = \\frac{1}{1+i}\\), then \\(z - \\overline{z} =\\)", options: ["\\(i\\)", "\\(-i\\)", "\\(2i\\)", "\\(-2i\\)"], correct: 1 },
+        // Q65
+        { text: "The multiplicative inverse of \\((1+i)(1-i)\\) is:", options: ["\\(\\frac{1}{2}\\)", "2", "\\(\\frac{1}{2}i\\)", "\\(-2i\\)"], correct: 0 },
+        // Q66
+        { text: "If \\(z = 1 + i\\), the real part of \\(z^2\\) is:", options: ["0", "2", "-2", "1"], correct: 0 },
+        // Q67
+        { text: "If \\(z = 1 + i\\), the imaginary part of \\(z^2\\) is:", options: ["2", "0", "-2", "1"], correct: 0 },
+        // Q68
+        { text: "If \\(z = 1 + i\\), \\(|z^2| =\\)", options: ["2", "\\(\\sqrt{2}\\)", "4", "1"], correct: 0 },
+        // Q69
+        { text: "If \\(z = 1 + i\\), \\(\\overline{z^2} =\\)", options: ["\\(1-2i\\)", "\\(1+2i\\)", "\\(-1+2i\\)", "\\(-1-2i\\)"], correct: 0 },
+        // Q70
+        { text: "If \\( (x + iy)^2 = 3 + 4i \\), where \\(x, y \\in \\mathbb{R}\\), then \\(x\\) and \\(y\\) could be:", options: ["\\(x=2, y=1\\)", "\\(x=1, y=2\\)", "\\(x=2, y=-1\\)", "\\(x=-2, y=1\\)"], correct: 0 },
+
+        // Q71
+        { text: "Solve for \\(z\\) and \\(w\\): <br> \\( z + i w = 1 \\) <br> \\( i z + w = 1 \\)", options: ["\\(z = \\frac{1+i}{2}, w = \\frac{1-i}{2}\\)", "\\(z = \\frac{1-i}{2}, w = \\frac{1+i}{2}\\)", "\\(z = 1, w = 1\\)", "\\(z = i, w = -i\\)"], correct: 0 },
+        // Q72
+        { text: "Solve for \\(z\\): <br> \\( (1+i)z + (1-i)\\overline{z} = 4 \\)", options: ["\\(z = 2\\)", "\\(z = 2i\\)", "\\(z = 1+i\\)", "\\(z = 1-i\\)"], correct: 0 },
+        // Q73
+        { text: "Solve for \\(z\\) and \\(w\\): <br> \\( 2z + i w = 1+i \\) <br> \\( i z + 2w = 1-i \\)", options: ["\\(z = 1, w = 1\\)", "\\(z = 1, w = i\\)", "\\(z = i, w = 1\\)", "\\(z = i, w = i\\)"], correct: 0 },
+        // Q74
+        { text: "Solve for \\(z\\): \\((1+i)z = 2-3i\\)", options: ["\\(-\\frac{1}{2} - \\frac{5}{2}i\\)", "\\(-\\frac{1}{2} + \\frac{5}{2}i\\)", "\\(\\frac{1}{2} - \\frac{5}{2}i\\)", "\\(\\frac{1}{2} + \\frac{5}{2}i\\)"], correct: 0 },
+        // Q75
+        { text: "If \\(z + w = 3 + 4i\\) and \\(z - w = 1 - 2i\\), find \\(z\\) and \\(w\\):", options: ["\\(z = 2 + i, w = 1 + 3i\\)", "\\(z = 2 + 3i, w = 1 + i\\)", "\\(z = 1 + i, w = 2 + 3i\\)", "\\(z = 1 + 3i, w = 2 + i\\)"], correct: 0 },
+        // Q76
+        { text: "Factor \\(z^2 + 1\\) over complex numbers:", options: ["\\((z+i)(z-i)\\)", "\\((z+1)(z-1)\\)", "\\((z+i)^2\\)", "\\((z-i)^2\\)"], correct: 0 },
+        // Q77
+        { text: "Factor \\(z^2 + 4\\) over complex numbers:", options: ["\\((z+2i)(z-2i)\\)", "\\((z+2)(z-2)\\)", "\\((z+4i)(z-4i)\\)", "\\((z+4)(z-4)\\)"], correct: 0 },
+        // Q78
+        { text: "The roots of \\(z^2 + 2z + 5 = 0\\) are:", options: ["\\(-1 \\pm 2i\\)", "\\(1 \\pm 2i\\)", "\\(-2 \\pm i\\)", "\\(2 \\pm i\\)"], correct: 0 },
+        // Q79
+        { text: "Factor \\(z^2 - 2z + 2\\) over complex numbers:", options: ["\\((z-(1+i))(z-(1-i))\\)", "\\((z-(1+2i))(z-(1-2i))\\)", "\\((z-(-1+i))(z-(-1-i))\\)", "\\((z-(2+i))(z-(2-i))\\)"], correct: 0 },
+        // Q80
+        { text: "Factor \\(z^3 - 1\\) over complex numbers:", options: ["\\((z-1)(z^2+z+1)\\)", "\\((z+1)(z^2-z+1)\\)", "\\((z-1)(z^2-z+1)\\)", "\\((z+1)(z^2+z+1)\\)"], correct: 0 },
+        // Q81
+        { text: "The roots of \\(z^3 + 1 = 0\\) are:", options: ["\\(-1, \\frac{1 \\pm i\\sqrt{3}}{2}\\)", "\\(1, \\frac{-1 \\pm i\\sqrt{3}}{2}\\)", "\\(-1, \\frac{-1 \\pm i\\sqrt{3}}{2}\\)", "\\(1, \\frac{1 \\pm i\\sqrt{3}}{2}\\)"], correct: 0 },
+        // Q82
+        { text: "Factor \\(z^2 + z + 1\\) over complex numbers:", options: ["\\(\\left(z - \\frac{-1 + i\\sqrt{3}}{2}\\right)\\left(z - \\frac{-1 - i\\sqrt{3}}{2}\\right)\\)", "\\(\\left(z - \\frac{1 + i\\sqrt{3}}{2}\\right)\\left(z - \\frac{1 - i\\sqrt{3}}{2}\\right)\\)", "\\((z - i)(z + i)\\)", "\\((z - \\sqrt{3}i)(z + \\sqrt{3}i)\\)"], correct: 0 },
+        // Q83
+        { text: "Factor \\(z^4 - 1\\) over complex numbers:", options: ["\\((z-1)(z+1)(z-i)(z+i)\\)", "\\((z-1)^2(z+1)^2\\)", "\\((z^2-1)(z^2+1)\\)", "\\((z-1)(z+1)(z^2+1)\\)"], correct: 0 },
+        // Q84
+        { text: "The roots of \\(z^2 + 4z + 13 = 0\\) are:", options: ["\\(-2 \\pm 3i\\)", "\\(2 \\pm 3i\\)", "\\(-3 \\pm 2i\\)", "\\(3 \\pm 2i\\)"], correct: 0 },
+        // Q85
+        { text: "A polynomial with roots \\(i\\) and \\(-i\\) is:", options: ["\\(z^2 + 1\\)", "\\(z^2 - 1\\)", "\\(z^2 + i\\)", "\\(z^2 - i\\)"], correct: 0 },
+        // Q86
+        { text: "A polynomial with roots \\(1+i\\) and \\(1-i\\) is:", options: ["\\(z^2 - 2z + 2\\)", "\\(z^2 + 2z + 2\\)", "\\(z^2 - 2z - 2\\)", "\\(z^2 + 2z - 2\\)"], correct: 0 },
+        // Q87
+        { text: "Factor \\(z^2 + (2+i)z + 2i\\) over complex numbers:", options: ["\\((z+i)(z+2)\\)", "\\((z-i)(z+2)\\)", "\\((z+2i)(z+1)\\)", "\\((z-2i)(z-1)\\)"], correct: 0 },
+        // Q88
+        { text: "Solve for \\(z\\): <br> \\( z + \\overline{z} = 4 \\) <br> \\( z - \\overline{z} = 2i \\)", options: ["\\(z = 2 + i\\)", "\\(z = 2 - i\\)", "\\(z = 1 + 2i\\)", "\\(z = 1 - 2i\\)"], correct: 0 },
+        // Q89
+        { text: "Solve for \\(z\\) and \\(w\\): <br> \\( z + i w = 1 + i \\) <br> \\( i z + w = 1 - i \\)", options: ["\\(z = 1, w = i\\)", "\\(z = 1, w = -i\\)", "\\(z = i, w = 1\\)", "\\(z = -i, w = 1\\)"], correct: 0 },
+        // Q90
+        { text: "Factor \\(z^3 - 2z^2 + 2z\\) over complex numbers:", options: ["\\(z(z-(1+i))(z-(1-i))\\)", "\\(z(z+(1+i))(z+(1-i))\\)", "\\(z(z-(2+i))(z-(2-i))\\)", "\\(z(z+(2+i))(z+(2-i))\\)"], correct: 0 },
+        // Q91
+        { text: "The roots of \\(z^4 + 4 = 0\\) are:", options: ["\\(\\pm 1 \\pm i\\)", "\\(\\pm \\sqrt{2} \\pm i\\sqrt{2}\\)", "\\(\\pm 2 \\pm 2i\\)", "\\(\\pm 1 \\pm \\sqrt{2}i\\)"], correct: 0 },
+        // Q92
+        { text: "Factor \\(z^2 + 6z + 10\\) over complex numbers:", options: ["\\((z+3+i)(z+3-i)\\)", "\\((z-3+i)(z-3-i)\\)", "\\((z+3+2i)(z+3-2i)\\)", "\\((z-3+2i)(z-3-2i)\\)"], correct: 0 },
+        // Q93
+        { text: "Solve for \\(z\\) and \\(w\\): <br> \\( (1+i)z + (1-i)w = 4 \\) <br> \\( (1-i)z + (1+i)w = 4i \\)", options: ["\\(z = 1+i, w = 1-i\\)", "\\(z = 1-i, w = 1+i\\)", "\\(z = 2, w = 2i\\)", "\\(z = 2i, w = 2\\)"], correct: 0 },
+        // Q94
+        { text: "Factor \\(z^2 + 9\\) over complex numbers:", options: ["\\((z+3i)(z-3i)\\)", "\\((z+3)(z-3)\\)", "\\((z+9i)(z-9i)\\)", "\\((z+9)(z-9)\\)"], correct: 0 },
+        // Q95
+        { text: "The quadratic equation whose roots are \\(2+i\\) and \\(2-i\\) is:", options: ["\\(z^2 - 4z + 5 = 0\\)", "\\(z^2 + 4z + 5 = 0\\)", "\\(z^2 - 4z - 5 = 0\\)", "\\(z^2 + 4z - 5 = 0\\)"], correct: 0 },
+        // Q96
+        { text: "Factor \\(z^3 + 2z^2 + z + 2\\) over complex numbers:", options: ["\\((z+2)(z^2+1)\\)", "\\((z-2)(z^2+1)\\)", "\\((z+2)(z^2-1)\\)", "\\((z-2)(z^2-1)\\)"], correct: 0 },
+        // Q97
+        { text: "Solve for \\(z\\) and \\(w\\): <br> \\( z + w = 2i \\) <br> \\( iz - iw = 2 \\)", options: ["\\(z = 1+i, w = -1+i\\)", "\\(z = 1-i, w = -1-i\\)", "\\(z = 1+i, w = 1-i\\)", "\\(z = -1+i, w = 1+i\\)"], correct: 0 },
+        // Q98
+        { text: "The roots of \\(z^2 + 2z + 2 = 0\\) are:", options: ["\\(-1 \\pm i\\)", "\\(1 \\pm i\\)", "\\(-2 \\pm i\\)", "\\(2 \\pm i\\)"], correct: 0 },
+        // Q99
+        { text: "Factor \\(z^2 - 4z + 13\\) over complex numbers:", options: ["\\((z-2+3i)(z-2-3i)\\)", "\\((z+2+3i)(z+2-3i)\\)", "\\((z-3+2i)(z-3-2i)\\)", "\\((z+3+2i)(z+3-2i)\\)"], correct: 0 },
+        // Q100
+        { text: "If \\(z\\) is a root of \\(z^2 + z + 1 = 0\\), then the value of \\(z^{2024} + z^{2023} + 1\\) is:", options: ["0", "1", "2", "3"], correct: 0 }
+    ];
+
+    // -------------------------------------------------------------
+    // RENDER ALL QUESTIONS
+    // -------------------------------------------------------------
+    const container = document.getElementById('questionsContainer');
+    let html = '';
+    questions.forEach((q, index) => {
+        const qNum = index + 1;
+        html += `<div class="question-block" id="q${qNum}">`;
+        html += `<div class="q-header"><span class="q-number">${qNum}.</span> <span class="q-text">${q.text}</span></div>`;
+        html += `<div class="options">`;
+        const letters = ['A', 'B', 'C', 'D'];
+        q.options.forEach((opt, optIndex) => {
+            const radioId = `q${qNum}_${optIndex}`;
+            html += `<label class="option-label" for="${radioId}">`;
+            html += `<input type="radio" name="q${qNum}" id="${radioId}" value="${optIndex}">`;
+            html += `<span>${letters[optIndex]}. ${opt}</span>`;
+            html += `</label>`;
+        });
+        html += `</div></div>`;
+    });
+    container.innerHTML = html;
+
+    // -------------------------------------------------------------
+    // SUBMIT FUNCTION
+    // -------------------------------------------------------------
+    function submitTest() {
+        let correct = 0, wrong = 0, unattempted = 0;
+        const total = questions.length;
+        for (let i = 0; i < total; i++) {
+            const qNum = i + 1;
+            const radios = document.getElementsByName(`q${qNum}`);
+            let selected = null;
+            for (const radio of radios) {
+                if (radio.checked) {
+                    selected = parseInt(radio.value);
+                    break;
+                }
+            }
+            if (selected === null) {
+                unattempted++;
+            } else if (selected === questions[i].correct) {
+                correct++;
+            } else {
+                wrong++;
+            }
+        }
+        const score = correct - 0.25 * wrong;
+        // Display result
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        document.getElementById('scoreDisplay').textContent = `${score.toFixed(2)} / ${total}`;
+        document.getElementById('detailDisplay').textContent = `You got ${correct} correct, ${wrong} wrong, and ${unattempted} unattempted.`;
+        document.getElementById('correctCount').textContent = correct;
+        document.getElementById('wrongCount').textContent = wrong;
+        document.getElementById('unattemptedCount').textContent = unattempted;
+
+        // Scroll to result
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+</script>
+</body>
+</html>
