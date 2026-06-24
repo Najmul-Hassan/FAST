@@ -1,185 +1,195 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAST Entry Test – Complex Numbers (100 MCQs)</title>
+    <title>Complex Numbers – 100 MCQs</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
+            background: #f1f5f9;
             padding: 20px;
-            color: #1e293b;
+            color: #0f172a;
         }
         .container {
             max-width: 1000px;
             margin: 0 auto;
             background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
         }
-        h1 {
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 8px;
-            color: #0f172a;
-        }
+        h1 { font-size: 28px; text-align: center; margin-bottom: 4px; color: #0f172a; }
         .subhead {
             text-align: center;
             font-size: 16px;
             color: #475569;
             margin-bottom: 25px;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 15px;
+            padding-bottom: 16px;
         }
         .question-block {
             background: #f8fafc;
-            padding: 18px 20px;
-            margin-bottom: 14px;
-            border-radius: 10px;
-            border-left: 5px solid #3b82f6;
-            transition: 0.2s;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border-left: 6px solid #3b82f6;
+            transition: background 0.15s;
         }
-        .question-block:hover {
-            background: #f1f5f9;
-        }
+        .question-block:hover { background: #f1f5f9; }
         .q-header {
             font-weight: 600;
             font-size: 17px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: baseline;
-            gap: 8px;
+            gap: 6px;
         }
-        .q-number {
-            color: #2563eb;
-            min-width: 40px;
-        }
-        .q-text {
-            flex: 1;
-        }
+        .q-number { color: #2563eb; min-width: 40px; font-weight: 700; }
+        .q-text { flex: 1; line-height: 1.5; }
         .options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px 20px;
-            padding-left: 10px;
+            gap: 6px 25px;
+            padding-left: 12px;
         }
-        @media (max-width: 600px) {
-            .options {
-                grid-template-columns: 1fr;
-            }
-        }
+        @media (max-width: 650px) { .options { grid-template-columns: 1fr; } }
         .option-label {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 6px;
+            gap: 10px;
+            padding: 6px 12px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.15s;
+            transition: background 0.15s, border-left 0.2s;
+            border-left: 4px solid transparent;
         }
-        .option-label:hover {
-            background: #e2e8f0;
-        }
+        .option-label:hover { background: #e2e8f0; }
         .option-label input[type="radio"] {
             accent-color: #2563eb;
-            transform: scale(1.1);
+            transform: scale(1.15);
             flex-shrink: 0;
         }
-        .submit-area {
+        .option-label .letter { font-weight: 600; color: #334155; min-width: 20px; }
+        /* Highlight styles */
+        .correct-answer {
+            background-color: #d4edda !important;
+            border-left: 4px solid #28a745 !important;
+        }
+        .wrong-answer {
+            background-color: #f8d7da !important;
+            border-left: 4px solid #dc3545 !important;
+        }
+        .btn-group {
             text-align: center;
-            margin: 30px 0 20px;
+            margin: 35px 0 20px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         .btn {
             background: #2563eb;
             color: white;
             border: none;
-            padding: 14px 50px;
-            font-size: 20px;
+            padding: 15px 45px;
+            font-size: 18px;
             font-weight: 600;
-            border-radius: 40px;
+            border-radius: 50px;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+            box-shadow: 0 6px 16px rgba(37,99,235,0.3);
         }
-        .btn:hover {
-            background: #1d4ed8;
-            transform: scale(1.02);
+        .btn:hover { background: #1d4ed8; transform: scale(1.02); }
+        .btn:active { transform: scale(0.97); }
+        .btn-reset {
+            background: #64748b;
+            box-shadow: 0 6px 16px rgba(100,116,139,0.3);
         }
-        .btn:active {
-            transform: scale(0.98);
-        }
+        .btn-reset:hover { background: #475569; }
         #result {
-            margin-top: 25px;
-            padding: 25px;
-            background: #f1f5f9;
-            border-radius: 16px;
+            margin-top: 30px;
+            padding: 28px 20px;
+            background: #f8fafc;
+            border-radius: 18px;
             border: 2px solid #cbd5e1;
             display: none;
             text-align: center;
         }
-        #result .score {
-            font-size: 36px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        #result .detail {
-            font-size: 18px;
-            margin-top: 8px;
-            color: #334155;
-        }
+        #result .score { font-size: 40px; font-weight: 700; color: #0f172a; }
+        #result .detail { font-size: 18px; margin-top: 8px; color: #334155; }
         #result .correct { color: #16a34a; }
         #result .wrong { color: #dc2626; }
         #result .unattempted { color: #6b7280; }
+        #answerStat {
+            margin-top: 16px;
+            padding: 14px 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 2px solid #2563eb;
+            display: inline-block;
+            font-weight: 500;
+        }
+        #answerStat .highlight-correct {
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin: 0 2px;
+        }
         .footer {
             text-align: center;
             font-size: 14px;
             color: #94a3b8;
-            margin-top: 25px;
+            margin-top: 30px;
             border-top: 1px solid #e2e8f0;
-            padding-top: 15px;
+            padding-top: 18px;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </head>
 <body>
 <div class="container">
-    <h1>🧪 FAST-NUCES Entry Test</h1>
-    <div class="subhead">Complex Numbers – 100 MCQs &nbsp;|&nbsp; <span style="color:#2563eb;">+1</span> correct, <span style="color:#dc2626;">−0.25</span> wrong, <span style="color:#6b7280;">0</span> unattempted</div>
+    <h1>🧪 Complex Numbers</h1>
+    <div class="subhead">
+        100 MCQs – FAST‑NUCES Entry Test &nbsp;|&nbsp;
+        <span style="color:#2563eb;">+1</span> correct,
+        <span style="color:#dc2626;">−0.25</span> wrong,
+        <span style="color:#6b7280;">0</span> unattempted
+        <br>
+        <span style="font-size:14px; color:#64748b;">Options shuffled for realism — correct answers highlighted after submission</span>
+    </div>
 
     <form id="testForm">
         <div id="questionsContainer"></div>
-        <div class="submit-area">
+        <div class="btn-group">
             <button type="button" class="btn" onclick="submitTest()">📊 Submit &amp; Check Score</button>
+            <button type="button" class="btn btn-reset" onclick="resetTest()">🔄 Reset All</button>
         </div>
     </form>
 
     <div id="result">
         <div class="score" id="scoreDisplay"></div>
         <div class="detail" id="detailDisplay"></div>
-        <div style="margin-top:12px;">
+        <div style="margin-top:14px; font-size:17px;">
             <span class="correct">✔ Correct: <span id="correctCount">0</span></span> &nbsp;|&nbsp;
             <span class="wrong">✘ Wrong: <span id="wrongCount">0</span></span> &nbsp;|&nbsp;
             <span class="unattempted">⏺ Unattempted: <span id="unattemptedCount">0</span></span>
         </div>
+        <div id="answerStat"></div>
     </div>
 
-    <div class="footer">Designed for FAST‑NUCES entry test preparation • 100 questions</div>
+    <div class="footer">Designed for FAST‑NUCES entry test • Unit 1: Complex Numbers</div>
 </div>
 
 <script>
     // -------------------------------------------------------------
-    // QUESTIONS DATA (100 MCQs) – generated from the LaTeX test
-    // Each entry: { text, options: [A, B, C, D], correct: 0..3 }
+    // QUESTIONS DATA – 100 MCQs from Complex Numbers
+    // (Full list shortened for brevity; include your full set)
     // -------------------------------------------------------------
-    const questions = [
+    const questionsData = [
         // Q1
         { text: "The complex number \\(3 - 4i\\) in ordered pair notation is:", options: ["(3, -4)", "(-3, 4)", "(3, 4)", "(-3, -4)"], correct: 0 },
         // Q2
@@ -250,7 +260,6 @@
         { text: "For \\(z = x + iy\\), \\(z + \\overline{z} =\\)", options: ["\\(2x\\)", "\\(2iy\\)", "\\(2y\\)", "\\(-2iy\\)"], correct: 0 },
         // Q35
         { text: "\\(| \\overline{z} | =\\)", options: ["\\(|z|\\)", "\\(-|z|\\)", "\\(|z|^2\\)", "\\(z\\)"], correct: 0 },
-
         // Q36
         { text: "Which of the following illustrates the commutative property of multiplication?", options: ["\\((2+3i)(4-i) = (4-i)(2+3i)\\)", "\\((2+3i)+ (4-i) = (4-i)+(2+3i)\\)", "\\((2+3i) \\times 1 = 2+3i\\)", "\\((2+3i) + 0 = 2+3i\\)"], correct: 0 },
         // Q37
@@ -321,7 +330,6 @@
         { text: "If \\(z = 1 + i\\), \\(\\overline{z^2} =\\)", options: ["\\(1-2i\\)", "\\(1+2i\\)", "\\(-1+2i\\)", "\\(-1-2i\\)"], correct: 0 },
         // Q70
         { text: "If \\( (x + iy)^2 = 3 + 4i \\), where \\(x, y \\in \\mathbb{R}\\), then \\(x\\) and \\(y\\) could be:", options: ["\\(x=2, y=1\\)", "\\(x=1, y=2\\)", "\\(x=2, y=-1\\)", "\\(x=-2, y=1\\)"], correct: 0 },
-
         // Q71
         { text: "Solve for \\(z\\) and \\(w\\): <br> \\( z + i w = 1 \\) <br> \\( i z + w = 1 \\)", options: ["\\(z = \\frac{1+i}{2}, w = \\frac{1-i}{2}\\)", "\\(z = \\frac{1-i}{2}, w = \\frac{1+i}{2}\\)", "\\(z = 1, w = 1\\)", "\\(z = i, w = -i\\)"], correct: 0 },
         // Q72
@@ -385,33 +393,71 @@
     ];
 
     // -------------------------------------------------------------
-    // RENDER ALL QUESTIONS
+    // SHUFFLE & RENDER LOGIC
     // -------------------------------------------------------------
-    const container = document.getElementById('questionsContainer');
-    let html = '';
-    questions.forEach((q, index) => {
-        const qNum = index + 1;
-        html += `<div class="question-block" id="q${qNum}">`;
-        html += `<div class="q-header"><span class="q-number">${qNum}.</span> <span class="q-text">${q.text}</span></div>`;
-        html += `<div class="options">`;
-        const letters = ['A', 'B', 'C', 'D'];
-        q.options.forEach((opt, optIndex) => {
-            const radioId = `q${qNum}_${optIndex}`;
-            html += `<label class="option-label" for="${radioId}">`;
-            html += `<input type="radio" name="q${qNum}" id="${radioId}" value="${optIndex}">`;
-            html += `<span>${letters[optIndex]}. ${opt}</span>`;
-            html += `</label>`;
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    let shuffledQuestions = [];
+
+    function prepareQuestions() {
+        shuffledQuestions = questionsData.map(q => {
+            const optArray = q.options.map((opt, idx) => ({ option: opt, originalIndex: idx }));
+            shuffleArray(optArray);
+            const newOptions = optArray.map(item => item.option);
+            const newCorrect = optArray.findIndex(item => item.originalIndex === q.correct);
+            return { text: q.text, options: newOptions, correct: newCorrect };
         });
-        html += `</div></div>`;
-    });
-    container.innerHTML = html;
+    }
+
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        let html = '';
+        shuffledQuestions.forEach((q, index) => {
+            const qNum = index + 1;
+            html += `<div class="question-block" id="q${qNum}">`;
+            html += `<div class="q-header"><span class="q-number">${qNum}.</span> <span class="q-text">${q.text}</span></div>`;
+            html += `<div class="options">`;
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, optIndex) => {
+                const radioId = `q${qNum}_${optIndex}`;
+                html += `<label class="option-label" for="${radioId}" id="label_${radioId}">`;
+                html += `<input type="radio" name="q${qNum}" id="${radioId}" value="${optIndex}">`;
+                html += `<span class="letter">${letters[optIndex]}.</span> <span>${opt}</span>`;
+                html += `</label>`;
+            });
+            html += `</div></div>`;
+        });
+        container.innerHTML = html;
+        if (window.MathJax && MathJax.Hub) MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+
+    prepareQuestions();
+    renderQuestions();
 
     // -------------------------------------------------------------
-    // SUBMIT FUNCTION
+    // HELPER: Clear all highlights
+    // -------------------------------------------------------------
+    function clearHighlights() {
+        document.querySelectorAll('.option-label').forEach(label => {
+            label.classList.remove('correct-answer', 'wrong-answer');
+        });
+    }
+
+    // -------------------------------------------------------------
+    // SUBMIT & RESET
     // -------------------------------------------------------------
     function submitTest() {
+        clearHighlights(); // remove previous highlights
+
         let correct = 0, wrong = 0, unattempted = 0;
-        const total = questions.length;
+        const total = shuffledQuestions.length;
+
         for (let i = 0; i < total; i++) {
             const qNum = i + 1;
             const radios = document.getElementsByName(`q${qNum}`);
@@ -422,16 +468,29 @@
                     break;
                 }
             }
-            if (selected === null) {
-                unattempted++;
-            } else if (selected === questions[i].correct) {
-                correct++;
+
+            const correctIdx = shuffledQuestions[i].correct;
+
+            // Highlight correct answer (always green)
+            const correctLabel = document.getElementById(`label_q${qNum}_${correctIdx}`);
+            if (correctLabel) correctLabel.classList.add('correct-answer');
+
+            // If user selected something
+            if (selected !== null) {
+                if (selected === correctIdx) {
+                    correct++;
+                } else {
+                    wrong++;
+                    // Highlight the wrong selection in red
+                    const wrongLabel = document.getElementById(`label_q${qNum}_${selected}`);
+                    if (wrongLabel) wrongLabel.classList.add('wrong-answer');
+                }
             } else {
-                wrong++;
+                unattempted++;
             }
         }
+
         const score = correct - 0.25 * wrong;
-        // Display result
         const resultDiv = document.getElementById('result');
         resultDiv.style.display = 'block';
         document.getElementById('scoreDisplay').textContent = `${score.toFixed(2)} / ${total}`;
@@ -440,8 +499,35 @@
         document.getElementById('wrongCount').textContent = wrong;
         document.getElementById('unattemptedCount').textContent = unattempted;
 
-        // Scroll to result
+        // Correct-answer distribution
+        const posCount = [0, 0, 0, 0];
+        shuffledQuestions.forEach(q => { posCount[q.correct]++; });
+        document.getElementById('answerStat').innerHTML = `
+            <div style="font-size:15px; color:#0f172a;">
+                <strong>✅ Correct‑answer distribution:</strong>
+                <span class="highlight-correct">A: ${posCount[0]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">B: ${posCount[1]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">C: ${posCount[2]}</span> &nbsp;|&nbsp;
+                <span class="highlight-correct">D: ${posCount[3]}</span>
+                &nbsp;&nbsp;<span style="font-size:13px; color:#64748b;">(shuffled for realism)</span>
+            </div>
+        `;
         resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetTest() {
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+        clearHighlights();
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('correctCount').textContent = '0';
+        document.getElementById('wrongCount').textContent = '0';
+        document.getElementById('unattemptedCount').textContent = '0';
+        document.getElementById('scoreDisplay').textContent = '';
+        document.getElementById('detailDisplay').textContent = '';
+        document.getElementById('answerStat').innerHTML = '';
+        prepareQuestions();
+        renderQuestions();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 </body>
